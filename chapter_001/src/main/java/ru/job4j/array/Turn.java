@@ -17,7 +17,7 @@ public class Turn {
         int temt;
         int to_right;
         int to_left;
-        if(array.length%2!=0) {
+        if (array.length%2!=0) {
             for (int x = 0; x < array.length; x++) {
                 to_right = x;
                 to_left = array.length - x - 1;
@@ -28,7 +28,7 @@ public class Turn {
                 array[x] = array[to_left];
                 array[to_left] = temt;
             }
-        }else{
+        } else {
             for (int x = 0; x < array.length; x++) {
                 to_right = x;
                 to_left = array.length - x - 1;
