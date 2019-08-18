@@ -13,7 +13,14 @@ public class ArrayChar {
         boolean result = true;
         char[] pref = prefix.toCharArray();
         char[] wrd = word.toCharArray();
-        // проверить. что массив data имеет первые элементы одинаковые с value
+        for (int x=0;x<pref.length;x++){
+            if (pref[x]==wrd[x]) {
+                continue;
+            }else{
+                result=false;
+                break;
+            }
+        }
         return result;
     }
 }
