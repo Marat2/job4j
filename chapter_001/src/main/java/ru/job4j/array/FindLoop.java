@@ -33,8 +33,9 @@ public class FindLoop {
      * @param finish верхняя граница поиска
      * @return индекс элемента
      */
+    //Для поиска минимального значения нужно использовать метод indexOf(int[] data, el, start, finish). Этот метод был реализован в предыдущей задачи.
     public int indexOf(int[] data, int el, int start, int finish) {
-        int rst = -1; // если элемента нет в массиве, то возвращаем -1.
+        int rst = -1;
         for (int x=start;x<=finish;x++) {
             if (data[x]==el) {
                 rst = x;
@@ -42,5 +43,9 @@ public class FindLoop {
             }
         }
         return rst;
+    }
+
+    public int[] sort(int[] data) {
+        return data;
     }
 }
