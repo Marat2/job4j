@@ -9,7 +9,7 @@ package ru.job4j.array;
 public class FindLoop {
 
     /**
-     * Сложение
+     * Поиск
      * @param data массив для пойска до значению элемента.
      * @param el значение элемента.
      * @return индекс элемента
@@ -20,6 +20,24 @@ public class FindLoop {
         for (int index=0;index<data.length;index++) {
             if (data[index] == el) {
                 rst = index;
+                break;
+            }
+        }
+        return rst;
+    }
+    /**
+     * Поиск в указанном диапазоне
+     * @param data массив для пойска до значению элемента.
+     * @param el значение элемента.
+     * @param start нижняя груницца поиска
+     * @param finish верхняя граница поиска
+     * @return индекс элемента
+     */
+    public int indexOf(int[] data, int el, int start, int finish) {
+        int rst = -1; // если элемента нет в массиве, то возвращаем -1.
+        for (int x=start;x<=finish;x++) {
+            if (data[x]==el) {
+                rst = x;
                 break;
             }
         }
