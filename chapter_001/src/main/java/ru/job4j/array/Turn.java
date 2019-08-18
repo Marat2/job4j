@@ -20,9 +20,7 @@ public class Turn {
             for (int x = 0; x < array.length/2; x++) {
                 to_right = x;
                 to_left = array.length - x - 1;
-                if (to_right == to_left) {
-                    break;
-                }
+
                 temt = array[to_right];
                 array[x] = array[to_left];
                 array[to_left] = temt;
