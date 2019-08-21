@@ -7,7 +7,6 @@ public class MatrixCheck {
         boolean first=data[0][0];
         for (int x=0;x<data.length;x++) {
             counter++;
-            for (int y=0;y<data[x].length;y++){
                 int inner=data[x].length-counter;
                 if(data[x][counter-1]==data[x][inner]==first){
                     break;
@@ -15,10 +14,6 @@ public class MatrixCheck {
                     result=false;
                     break;
                 }
-            }
-            if (result==false){
-                break;
-            }
         }
         return result;
     }
