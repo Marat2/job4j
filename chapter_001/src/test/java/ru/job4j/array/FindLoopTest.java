@@ -57,4 +57,12 @@ public class FindLoopTest {
         int[] expect = new int[] {1, 2, 3, 4, 5};
         assertThat(result, is(expect));
     }
+    @Test
+    public void whenSort3() {
+        FindLoop find = new FindLoop();
+        int[] input = new int[] {3, 2, 1};
+        int result[] = find.sort(input);
+        int[] expect = new int[] {1, 2, 3};
+        assertThat(result, is(expect));
+    }
 }

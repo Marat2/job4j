@@ -46,7 +46,20 @@ public class FindLoop {
     }
 
     public int[] sort(int[] data) {
-
+        for (int y=0;y<data.length;y++) {
+            int temp = data[y];
+            for (int x = y; x < data.length; x++) {
+                if (temp <= data[x]) {
+                    continue;
+                } else {
+                    int index = this.indexOf(data, data[x], x, x);
+                    int cur_temp = this.indexOf(data, temp, 0, x);
+                    data[cur_temp] = data[x];
+                    data[index] = temp;
+                    temp = data[cur_temp];
+                }
+            }
+        }
         return data;
     }
 }
