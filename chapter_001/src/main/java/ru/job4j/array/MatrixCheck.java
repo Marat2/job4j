@@ -3,14 +3,12 @@ package ru.job4j.array;
 public class MatrixCheck {
     public boolean mono(boolean[][] data) {
         boolean result = true;
-        int counter=0;
-        boolean first=data[0][0];
         for (int x=0;x<data.length;x++) {
-            counter++;
-                int inner=data[x].length-counter;
-                if(data[x][counter-1]==data[x][inner]==first){
+                if(data[x][x]!=data[0][0]){
+                    result = false;
                     break;
-                }else{
+                }
+                if(data[x][data.length-x-1]!=data[0][0]){
                     result=false;
                     break;
                 }
