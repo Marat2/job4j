@@ -30,7 +30,7 @@ public class MatrixCheckTest {
     }
 
     @Test
-    public void Square() {
+    public void square() {
         MatrixCheck check = new MatrixCheck();
         boolean[][] input = new boolean[][] {
                 {true, false},

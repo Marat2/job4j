@@ -11,11 +11,11 @@ public class Calculate {
         System.out.println("Calculate...");
         double first = Double.valueOf(arg[0]);
         double second = Double.valueOf(arg[1]);
-        System.out.println(String.format("%s + %s = %s",first,second,add(first,second)));
-        System.out.println(String.format("%s - %s = %s",first,second,substract(first,second)));
-        System.out.println(String.format("%s * %s = %s",first,second,multiple(first,second)));
-        System.out.println(String.format("%s / %s = %s",first,second,div(first,second)));
-        System.out.println(String.format("%s ^ %s = %s",first,second,expand(first,(int)second)));
+        System.out.println(String.format("%s + %s = %s", first, second, add(first, second)));
+        System.out.println(String.format("%s - %s = %s", first, second, substract(first, second)));
+        System.out.println(String.format("%s * %s = %s", first, second, multiple(first, second)));
+        System.out.println(String.format("%s / %s = %s", first, second, div(first, second)));
+        System.out.println(String.format("%s ^ %s = %s", first, second, expand(first, (int) second)));
     }
 
     /**
@@ -24,8 +24,8 @@ public class Calculate {
      * @param second второй аргумент.
      * @return результат
      */
-    private static double add(double first,double second){
-        return first+second;
+    private static double add(double first, double second) {
+        return first + second;
     }
 
     /**
@@ -34,8 +34,8 @@ public class Calculate {
      * @param second второй аргумент.
      * @return результат
      */
-    private static double substract(double first,double second){
-        return first-second;
+    private static double substract(double first, double second) {
+        return first - second;
     }
 
     /**
@@ -44,8 +44,8 @@ public class Calculate {
      * @param second второй аргумент.
      * @return результат
      */
-    private static double multiple(double first,double second){
-        return first*second;
+    private static double multiple(double first, double second) {
+        return first * second;
     }
 
     /**
@@ -54,8 +54,8 @@ public class Calculate {
      * @param second второй аргумент.
      * @return результат
      */
-    private static double div(double first,double second){
-        return  first/second;
+    private static double div(double first, double second) {
+        return  first / second;
     }
 
     /**
@@ -64,7 +64,7 @@ public class Calculate {
      * @param second второй аргумент.
      * @return результат
      */
-    private static double expand(double first,double second){
-        return Math.pow(first,second);
+    private static double expand(double first, double second) {
+        return Math.pow(first, second);
     }
 }

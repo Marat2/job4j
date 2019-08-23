@@ -8,33 +8,33 @@ public class SqAreaTest {
     @Test
     public void fourd() {
         int expected = 4;
-        int s = SqMax.max(1, 2,3,4);
+        int s = SqMax.max(1,  2, 3, 4);
         assertThat(s, is(expected));
     }
 
     @Test
     public void third() {
         int expected = 4;
-        int s = SqMax.max(2,3,4,1);
+        int s = SqMax.max(2, 3, 4, 1);
         assertThat(s, is(expected));
     }
     @Test
     public void second() {
-        int expected =4;
-        int s = SqMax.max(3,4,1,2);
+        int expected = 4;
+        int s = SqMax.max(3, 4, 1, 2);
         assertThat(s, is(expected));
     }
 
     @Test
     public void first() {
-        int expected =4;
-        int s = SqMax.max(4,1,2,3);
+        int expected = 4;
+        int s = SqMax.max(4, 1, 2, 3);
         assertThat(s, is(expected));
     }
     @Test
-    public void whenThirdLargerFirst(){
-        int expected =5;
-        int s = SqMax.max(4, 3, 5,1);
+    public void whenThirdLargerFirst() {
+        int expected = 5;
+        int s = SqMax.max(4,  3,  5, 1);
         assertThat(s, is(expected));
     }
 }

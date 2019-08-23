@@ -29,22 +29,22 @@ public class FindLoopTest {
     }
 
     @Test
-    public void whenFindInRange(){
+    public void whenFindInRange() {
         FindLoop find = new FindLoop();
         int[] input = new int[] {5, 2, 10, 2, 4};
-        int el=4;
-        int start=1;
-        int finish=3;
+        int el = 4;
+        int start = 1;
+        int finish = 3;
         int result = find.indexOf(input, el, start, finish);
         assertThat(result, is(-1));
     }
     @Test
-    public void whenMotFindInRange(){
+    public void whenMotFindInRange() {
         FindLoop find = new FindLoop();
         int[] input = new int[] {5, 2, 10, 2, 4};
-        int el=4;
-        int start=1;
-        int finish=4;
+        int el = 4;
+        int start = 1;
+        int finish = 4;
         int result = find.indexOf(input, el, start, finish);
         assertThat(result, is(el));
     }
@@ -53,16 +53,16 @@ public class FindLoopTest {
     public void whenSort5() {
         FindLoop find = new FindLoop();
         int[] input = new int[] {3, 4, 1, 2, 5};
-        int result[] = find.sort(input);
+        int[] res = find.sort(input);
         int[] expect = new int[] {1, 2, 3, 4, 5};
-        assertThat(result, is(expect));
+        assertThat(res, is(expect));
     }
     @Test
     public void whenSort3() {
         FindLoop find = new FindLoop();
         int[] input = new int[] {3, 2, 1};
-        int result[] = find.sort(input);
+        int[] res = find.sort(input);
         int[] expect = new int[] {1, 2, 3};
-        assertThat(result, is(expect));
+        assertThat(res, is(expect));
     }
 }

@@ -17,7 +17,7 @@ public class FindLoop {
 
     public int indexOf(int[] data, int el) {
         int rst = -1; // если элемента нет в массиве, то возвращаем -1.
-        for (int index=0;index<data.length;index++) {
+        for (int index = 0; index < data.length; index++) {
             if (data[index] == el) {
                 rst = index;
                 break;
@@ -36,8 +36,8 @@ public class FindLoop {
     //Для поиска минимального значения нужно использовать метод indexOf(int[] data, el, start, finish). Этот метод был реализован в предыдущей задачи.
     public int indexOf(int[] data, int el, int start, int finish) {
         int rst = -1;
-        for (int x=start;x<=finish;x++) {
-            if (data[x]==el) {
+        for (int x = start; x <= finish; x++) {
+            if (data[x] == el) {
                 rst = x;
                 break;
             }
@@ -46,17 +46,17 @@ public class FindLoop {
     }
 
     public int[] sort(int[] data) {
-        for (int y=0;y<data.length;y++) {
+        for (int y = 0; y < data.length; y++) {
             int temp = data[y];
             for (int x = y; x < data.length; x++) {
                 if (temp <= data[x]) {
                     continue;
                 } else {
                     int index = this.indexOf(data, data[x], x, x);
-                    int cur_temp = this.indexOf(data, temp, 0, x);
-                    data[cur_temp] = data[x];
+                    int curTemp = this.indexOf(data, temp, 0, x);
+                    data[curTemp] = data[x];
                     data[index] = temp;
-                    temp = data[cur_temp];
+                    temp = data[curTemp];
                 }
             }
         }
