@@ -71,44 +71,41 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
-        boolean flag;
         int counter=0;
+        int out=0;
+        int inner=0;
         for (int x = 0; x < table.length; x++) {
             for (int y = 0; y < table[x].length; y++) {
-                if (table[x][y] == 1) {//во снешних циклах прохожу пока не найду
+                if (table[x][y] == 1) {
                     ++counter;
-                    for (int i = 0; i < table[x].length-1; i++) {
-                        if (table[x][i] == table[x][y]) {
-                            ++counter;
-                        } else {
-                            counter=1;
-                            break;
-                        }
-                    }
-                    if (counter == 5) {
-                        break;
-                    }
-                    for (int j =1; j < table.length; j++) {
-                        if (table[j][y] == table[x][y]) {
-                            ++counter;
-                        }else{
-                            counter=1;
-                            break;
-                        }
-                    }
-                    if (counter == 5) {
-                        break;
-                    }
-                } else {
-                    continue;
+                    out = x;
+                    inner = y;
+                    break;
                 }
             }
-            if (counter == 5) {
+            if(counter > 0){
                 break;
             }
         }
+        for (int x =1; x < table.length; x++) {
+            if(table[x][inner] != table[out][inner]) {
+                break;
+            }
+            ++counter;
+        }
         if (counter == 5) {
-            result=true;
+            result = true;
+        } else {
+            counter = 1;
+            for (int x = 1; x < table[out].length; x++) {
+                if(table[out][x] != table[out][inner]) {
+                    break;
+                }
+                ++counter;
+            }
+        }
+        if (counter == 5) {
+            result = true;
         }
         return result;
     }
