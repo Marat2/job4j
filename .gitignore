@@ -25,5 +25,6 @@ hs_err_pid*
 #folders
 target/
 .idea/
+puzzle/target/
 chapter_001/target
 chapter_001/chapter_001.iml
