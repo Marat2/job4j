@@ -75,15 +75,19 @@ public class Logic {
         int counter2 = 0;
         for (int x = 0; x < table.length; x++) {
             if (table[x][x] == 1) {
-                for (int i = 0; i < table.length; i++){
-                    if (table[i][x] == 1) ++counter;
-                    if (table[x][i] == 1) ++counter2;
+                for (int i = 0; i < table.length; i++) {
+                    if (table[i][x] == 1) {
+                        ++counter;
+                    }
+                    if (table[x][i] == 1) {
+                        ++counter2;
+                    }
                 }
                 break;
             }
         }
-        if (counter==5 || counter2 == 5){
-            result=true;
+        if (counter == 5 || counter2 == 5) {
+            result = true;
         }
         return result;
     }
