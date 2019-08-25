@@ -72,40 +72,31 @@ public class Logic {
         int[][] table = this.convert();
         boolean result = false;
         int counter=0;
-        int out=0;
-        int inner=0;
         for (int x = 0; x < table.length; x++) {
-            for (int y = 0; y < table[x].length; y++) {
-                if (table[x][y] == 1) {
-                    ++counter;
-                    out = x;
-                    inner = y;
-                    break;
-                }
-            }
-            if(counter > 0){
-                break;
-            }
-        }
-        for (int x =1; x < table.length; x++) {
-            if(table[x][inner] != table[out][inner]) {
-                break;
-            }
-            ++counter;
-        }
-        if (counter == 5) {
-            result = true;
-        } else {
-            counter = 1;
-            for (int x = 1; x < table[out].length; x++) {
-                if(table[out][x] != table[out][inner]) {
-                    break;
-                }
+            if (table[x][x] == 1) {
                 ++counter;
+                for (int i = 1; i < table.length; i++) {
+                    if(table[i][x] != table[x][x]) {
+                        break;
+                    }
+                    ++counter;
+                }
+                if (counter == 5) {
+                    result = true;
+                } else {
+                    counter = 1;
+                    for (int j = 1; j < table[x].length; j++) {
+                        if(table[x][j] != table[x][x]) {
+                            break;
+                        }
+                        ++counter;
+                    }
+                }
+                break;
             }
         }
-        if (counter == 5) {
-            result = true;
+        if (counter==5){
+            result=true;
         }
         return result;
     }
