@@ -15,15 +15,14 @@ public class Turn {
      */
     public int[] back(int[] array) {
         int temt;
-        int toRight;
-        int toLeft;
+        int Right;
+        int Left;
             for (int x = 0; x < array.length / 2; x++) {
-                toRight = x;
-                toLeft = array.length - x - 1;
-
-                temt = array[toRight];
-                array[x] = array[toLeft];
-                array[toLeft] = temt;
+                Right = x;
+                Left = array.length - x - 1;
+                temt = array[Right];
+                array[x] = array[Left];
+                array[Left] = temt;
             }
         return array;
     }
