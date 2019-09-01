@@ -1,18 +1,15 @@
 package ru.job4j.condition;
 
 public class Triangle {
-    /**
-     * Метод вычисления полупериметра по длинам сторон.
-     *
-     * Формула.
-     *
-     * (a + b + c) / 2
-     *
-     * @param a расстояние между точками a b
-     * @param b расстояние между точками a c
-     * @param c расстояние между точками b c
-     * @return полуперимента.
-     */
+    private Point first;
+    private Point second;
+    private Point third;
+
+    public Triangle(Point ap, Point bp, Point cp) {
+        this.first = ap;
+        this.second = bp;
+        this.third = cp;
+    }
     public double period(double a, double b, double c) {
         double period = (a + b + c) / 2;
         return period;
@@ -48,11 +45,8 @@ public class Triangle {
      * @return Вернуть площадь, если треугольник существует или -1.
      */
 
-    public double area(int x1, int y1, int x2, int y2, int x3, int y3) {
+    public double area() {
         double rsl = -1;
-        Point first = new Point(x1, y1);
-        Point second = new Point(x2, y2);
-        Point third = new Point(x3, y3);
         double a = first.distance(second);
         double b = second.distance(third);
         double c = third.distance(first);
