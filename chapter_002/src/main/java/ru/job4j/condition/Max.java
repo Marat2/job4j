@@ -14,7 +14,7 @@ public class Max {
 
     public int max(int left, int right, int third, int four) {
         int result = left;
-        result=(left<max(right,third,four)) ? max(right,third,four) : result;
+        result=(left<max(max(right,third),four)) ? max(max(right,third),four) : result;
         return result;
     }
 }
