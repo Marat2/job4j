@@ -23,21 +23,21 @@ public class MaxTest {
         assertThat(result, is(3));
     }
     @Test
-    public void ThreeFirstGreater() {
+    public void threeFirstGreater() {
         Max max = new Max();
-        int result = max.max(4, 3,2);
+        int result = max.max(4,  3, 2);
         assertThat(result, is(4));
     }
     @Test
-    public void ThreeEquals() {
+    public void threeEquals() {
         Max max = new Max();
-        int result = max.max(4, 4,4);
+        int result = max.max(4, 4, 4);
         assertThat(result, is(4));
     }
     @Test
-    public void FourFirstGreater() {
+    public void fourFirstGreater() {
         Max max = new Max();
-        int result = max.max(4, 3,2,1);
+        int result = max.max(4, 3, 2, 1);
         assertThat(result, is(4));
     }
 }

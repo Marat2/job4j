@@ -21,7 +21,7 @@ public class Point {
         return sqrt(pow(this.x - that.x, 2) + pow(this.y - that.y, 2));
     }
     public double distance3d(Point that) {
-        return sqrt(pow(this.x - that.x, 2) + pow(this.y - that.y, 2)+ pow(this.z - that.z, 2));
+        return sqrt(pow(this.x - that.x, 2) + pow(this.y - that.y, 2) + pow(this.z - that.z, 2));
     }
     public void info() {
         System.out.println(String.format("Point[%s, %s]", this.x, this.y));

@@ -2,14 +2,14 @@ package ru.job4j.profession;
 
 public class Builder extends Engineer {
 
-    protected String Injuries[];
+    protected String[] injuries;
 
     public String[] getInjuries() {
-        return Injuries;
+        return injuries;
     }
 
     public void setInjuries(String[] injuries) {
-        Injuries = injuries;
+        injuries = injuries;
     }
 
 }

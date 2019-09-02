@@ -5,18 +5,18 @@ public class Operation {
     private int chance;
     protected boolean result;
 
-    public Operation(int chance){
-        this.chance=chance;
+    public Operation(int chance) {
+        this.chance = chance;
     }
 
     public int getChance() {
         return chance;
     }
 
-    public boolean Getresult(){
-        this.result=false;
+    public boolean getresult() {
+        this.result = false;
         if (this.chance > 50) {
-            this.result=true;
+            this.result = true;
         }
         return this.result;
     }

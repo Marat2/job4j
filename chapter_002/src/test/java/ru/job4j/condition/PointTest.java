@@ -18,8 +18,8 @@ public class PointTest {
 
     @Test
     public void whenZeroAndTenThenTenZ() {
-        Point first = new Point(0, 0,0);
-        Point second = new Point(0, 10,10);
+        Point first = new Point(0, 0, 0);
+        Point second = new Point(0, 10, 10);
         double result = first.distance3d(second);
         System.out.println(String.format("Result is %s", result));
         assertThat(result, is(14.142135623730951));
