@@ -31,7 +31,7 @@ public class TrackerTest {
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
     @Test
-    public void whenDeleteItem(){
+    public void whenDeleteItem() {
         Tracker tracker = new Tracker();
         Tracker expected = new Tracker();
         Item item = new Item("test1");
@@ -44,7 +44,7 @@ public class TrackerTest {
         assertThat(tracker.delete(item.getId()), is(expect));
     }
     @Test
-    public void whenDeleteItemThenNoItem(){
+    public void whenDeleteItemThenNoItem() {
         Tracker tracker = new Tracker();
         Tracker expected = new Tracker();
         Item item = new Item("test1");
@@ -57,7 +57,7 @@ public class TrackerTest {
         Assert.assertNull(tracker.findById(item.getId()));
     }
     @Test
-    public void findAllItem(){
+    public void findAllItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("test1");
         Item next = new Item("test2");
@@ -67,7 +67,7 @@ public class TrackerTest {
         Assert.assertEquals(2, tracker.findAll().length);
     }
     @Test
-    public void findByNameItem(){
+    public void findByNameItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("test1");
         Item next = new Item("test2");
