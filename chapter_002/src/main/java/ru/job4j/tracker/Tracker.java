@@ -40,21 +40,18 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        for (int x = 0; x < items.length; x++) {
-            if (items[x] == null) {
-                items = Arrays.copyOf(items,  this.position);
-            }
-        }
-        return items;
+        return Arrays.copyOf(items,  this.position);
     }
     public Item[] findByName(String key) {
-        for (int x = 0; x < items.length; x++) {
-            if (items[x] == null || !items[x].getName().equals(key)) {
-                items = Arrays.copyOf(items, this.position - 1);
-                --this.position;
+        Item[] temp = new Item[this.position];
+        int x = 0;
+        while (x < this.position) {
+            if (items[x].getName().equals(key)) {
+                temp[x] = items[x];
             }
+            ++x;
         }
-        return items;
+        return Arrays.copyOf(temp,  x - 1);
     }
 
     public Item findById(String id) {
