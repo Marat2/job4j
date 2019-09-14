@@ -49,68 +49,77 @@ public class StartUI {
         }
     }
     private void createItem() {
-        /*System.out.println("------------ Добавление новой заявки --------------");
+        System.out.println("------------ Добавление новой заявки --------------");
         String name = this.input.ask("Введите имя заявки :");
         String desc = this.input.ask("Введите описание заявки :");
         Item item = new Item(name, desc);
         this.tracker.add(item);
-        System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");*/
+        System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
     }
     private void showMenu() {
-        /*System.out.println("Меню.");
+        System.out.println("Меню.");
         System.out.println("Для добавления элемента нажмите 0");
         System.out.println("Для вывода всех элементов нажмите 1");
         System.out.println("Для редактирования элемента нажмите 2");
         System.out.println("Для удаления заявки нажмите 3");
         System.out.println("Для нахождения заявки по ее id нажмите 4");
         System.out.println("Для нахождения заявки по ее имени нажмите 5");
-        System.out.println("Для выхода нажмите 6");*/
+        System.out.println("Для выхода нажмите 6");
     }
     public void showItems() {
-        /*System.out.println("------------ Список заявок --------------");
+        System.out.println("------------ Список заявок --------------");
         for (Item item:this.tracker.findAll()) {
-            System.out.println(item.getName().concat("    №").concat(item.getId()));
+            System.out.println(item.getName() + "  № " + item.getId());
         }
-        System.out.println("-----------------------------------------");*/
+        System.out.println("-----------------------------------------");
     }
     public void editItem() {
-        /*System.out.println("------------ Редактирование заявки --------------");
+        System.out.println("------------ Редактирование заявки --------------");
         String id = this.input.ask("Введите имя id заявки :");
-        Item item = this.tracker.findById(id);
         String name = this.input.ask("Введите новое имя заявки :");
         String desc = this.input.ask("Введите новое описание заявки :");
-        item.setName(name);
-        item.setDesc(desc);
-        System.out.println("------------ Заявка с getId : " + item.getId() + "-----------");
-        System.out.println("------------ Новое название : " + item.getName() + "-----------");
-        System.out.println("------------ Новое описание : " + item.getDesc() + "-----------");
-        System.out.println("-----------------------------------------");*/
+        Item item = new Item(name, desc);
+        boolean result = this.tracker.replace(id, item);
+        if (result) {
+            System.out.println("------------ Заявка с getId : " + id + "-----------");
+            System.out.println("------------ Новое название : " + item.getName() + "-----------");
+            System.out.println("------------ Новое описание : " + item.getDesc() + "-----------");
+            System.out.println("-----------------------------------------");
+        } else {
+            System.out.println("------------ Ошибка замещения -----------");
+            System.out.println("-----------------------------------------");
+        }
     }
     public void deleteItem() {
-        /*System.out.println("------------ Удаление заявки --------------");
+        System.out.println("------------ Удаление заявки --------------");
         String id = this.input.ask("Введите id заявки на удаление :");
-        this.tracker.delete(id);
-        System.out.println("------------ Заявка удалена --------------");
-        System.out.println("-----------------------------------------");*/
+        boolean result = this.tracker.delete(id);
+        if (result) {
+            System.out.println("------------ Заявка удалена --------------");
+            System.out.println("-----------------------------------------");
+        } else {
+            System.out.println("------------ Ошибка удаления -----------");
+            System.out.println("-----------------------------------------");
+        }
     }
     public void findItemById() {
-        /*System.out.println("------------ Выбрать заявку --------------");
+        System.out.println("------------ Выбрать заявку --------------");
         String id = this.input.ask("Введите id заявки :");
         Item item = this.tracker.findById(id);
         System.out.println("------------ Заявка с getId : " + item.getId() + "-----------");
         System.out.println("------------ Новое название : " + item.getName() + "-----------");
         System.out.println("------------ Новое описание : " + item.getDesc() + "-----------");
-        System.out.println("-----------------------------------------");*/
+        System.out.println("-----------------------------------------");
     }
     public void findItemByName() {
-        /*System.out.println("------------ Выбрать заявку по названию--------------");
+        System.out.println("------------ Выбрать заявку по названию--------------");
         String name = this.input.ask("Введите название заявки :");
         Item[] items = this.tracker.findByName(name);
         for (Item item:items) {
             System.out.println("№".concat(item.getId()).concat("   ").concat(item.getName()));
             System.out.println("Описание: " + item.getDesc());
         }
-        System.out.println("-----------------------------------------");*/
+        System.out.println("-----------------------------------------");
     }
     public void exit() {
         System.out.println("------------- Выход -------------");

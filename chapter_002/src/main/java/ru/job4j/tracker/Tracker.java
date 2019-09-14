@@ -18,6 +18,7 @@ public class Tracker {
         boolean result = false;
         for (int x = 0; x < this.position; x++) {
             if (items[x] != null && items[x].getId().equals(id)) {
+                item.setId(id);
                 items[x] = item;
                 result = true;
                 break;
@@ -44,8 +45,8 @@ public class Tracker {
     }
     public Item[] findByName(String key) {
         Item[] temp = new Item[this.position];
-        int i=0;
-        for (int x = 0; x<this.position; x++) {
+        int i = 0;
+        for (int x = 0; x < this.position; x++) {
             if (items[x].getName().equals(key)) {
                 temp[i] = items[x];
                 ++i;
