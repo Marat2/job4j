@@ -10,9 +10,9 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 public class StartUITest {
-    // поле содержит дефолтный вывод в консоль.
+
     private final PrintStream stdout = System.out;
-    // буфер для результата.
+
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
     @Before
@@ -29,27 +29,27 @@ public class StartUITest {
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
-        Tracker tracker = new Tracker();     // создаём Tracker
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
-        new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
-        assertThat(tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        Tracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.findAll()[0].getName(), is("test name"));
     }
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
-        // создаём Tracker
+
         Tracker tracker = new Tracker();
-        //Напрямую добавляем заявку
+
         Item item = tracker.add(new Item("test name",  "desc"));
-        //создаём StubInput с последовательностью действий(производим замену заявки)
+
         Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "6"});
-        // создаём StartUI и вызываем метод init()
+
         new StartUI(input, tracker).init();
-        // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+
         assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
     }
     @Test
     public void whenUserAddItemAndDelete() {
-        Tracker tracker = new Tracker();     // создаём Tracker
+        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name",  "desc"));
         Input input = new StubInput(new String[]{"3", item.getId(), "6"});
         new StartUI(input, tracker).init();
@@ -73,15 +73,13 @@ public class StartUITest {
     }
     @Test
     public void whenUserAddItem() {
-        Tracker tracker = new Tracker();     // создаём Tracker
+        Tracker tracker = new Tracker();    
         Item item = tracker.add(new Item("new item", "new desc"));
         Input input = new StubInput(new String[]{"1", "6"});
-        new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
+        new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                //"Меню.\r\nДля добавления элемента нажмите 0\r\nДля вывода всех элементов нажмите 1\r\nДля редактирования элемента нажмите 2\r\nДля удаления заявки нажмите 3\r\nДля нахождения заявки по ее id нажмите 4\r\nДля нахождения заявки по ее имени нажмите 5\r\nДля выхода нажмите 6\r\n
-                                //Меню.\r\nДля добавления элемента нажмите 0\r\nДля вывода всех элементов нажмите 1\r\nДля редактирования элемента нажмите 2\r\nДля удаления заявки нажмите 3\r\nДля нахождения заявки по ее id нажмите 4\r\nДля нахождения заявки по ее имени нажмите 5\r\nДля выхода нажмите 6\r\n------------- Выход -------------\r\n"
                                 .append("Меню.")
                                 .append(System.lineSeparator())
                                 .append("Для добавления элемента нажмите 0")
@@ -123,6 +121,6 @@ public class StartUITest {
                                 .append("------------- Выход -------------")
                                 .append(System.lineSeparator())
                                 .toString()
-                )); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+                ));
     }
 }
