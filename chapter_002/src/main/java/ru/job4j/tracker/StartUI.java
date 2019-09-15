@@ -106,12 +106,12 @@ public class StartUI {
         System.out.println("------------ Выбрать заявку --------------");
         String id = this.input.ask("Введите id заявки :");
         Item item = this.tracker.findById(id);
-        if (item!=null) {
+        if (item != null) {
             System.out.println("------------ Заявка с getId : " + item.getId() + "-----------");
             System.out.println("------------ Новое название : " + item.getName() + "-----------");
             System.out.println("------------ Новое описание : " + item.getDesc() + "-----------");
             System.out.println("-----------------------------------------");
-        }else{
+        } else {
             System.out.println("----------- Элемент не найден ---------");
         }
     }
