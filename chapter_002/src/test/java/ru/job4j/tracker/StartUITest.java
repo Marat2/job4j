@@ -15,6 +15,24 @@ public class StartUITest {
 
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
+    private static final String ADD = ""
+            .concat("Меню.")
+            .concat(System.lineSeparator())
+            .concat("Для добавления элемента нажмите 0")
+            .concat(System.lineSeparator())
+            .concat("Для вывода всех элементов нажмите 1")
+            .concat(System.lineSeparator())
+            .concat("Для редактирования элемента нажмите 2")
+            .concat(System.lineSeparator())
+            .concat("Для удаления заявки нажмите 3")
+            .concat(System.lineSeparator())
+            .concat("Для нахождения заявки по ее id нажмите 4")
+            .concat(System.lineSeparator())
+            .concat("Для нахождения заявки по ее имени нажмите 5")
+            .concat(System.lineSeparator())
+            .concat("Для выхода нажмите 6")
+            .concat(System.lineSeparator());
+
     @Before
     public void loadOutput() {
         System.out.println("execute before method");
@@ -78,49 +96,15 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()),
-                is(
-                        new StringBuilder()
-                                .append("Меню.")
-                                .append(System.lineSeparator())
-                                .append("Для добавления элемента нажмите 0")
-                                .append(System.lineSeparator())
-                                .append("Для вывода всех элементов нажмите 1")
-                                .append(System.lineSeparator())
-                                .append("Для редактирования элемента нажмите 2")
-                                .append(System.lineSeparator())
-                                .append("Для удаления заявки нажмите 3")
-                                .append(System.lineSeparator())
-                                .append("Для нахождения заявки по ее id нажмите 4")
-                                .append(System.lineSeparator())
-                                .append("Для нахождения заявки по ее имени нажмите 5")
-                                .append(System.lineSeparator())
-                                .append("Для выхода нажмите 6")
-                                .append(System.lineSeparator())
-                                .append("------------ Список заявок --------------")
-                                .append(System.lineSeparator())
-                                .append(item.getName() + "  № " + item.getId())
-                                .append(System.lineSeparator())
-                                .append("-----------------------------------------")
-                                .append(System.lineSeparator())
-                                .append("Меню.")
-                                .append(System.lineSeparator())
-                                .append("Для добавления элемента нажмите 0")
-                                .append(System.lineSeparator())
-                                .append("Для вывода всех элементов нажмите 1")
-                                .append(System.lineSeparator())
-                                .append("Для редактирования элемента нажмите 2")
-                                .append(System.lineSeparator())
-                                .append("Для удаления заявки нажмите 3")
-                                .append(System.lineSeparator())
-                                .append("Для нахождения заявки по ее id нажмите 4")
-                                .append(System.lineSeparator())
-                                .append("Для нахождения заявки по ее имени нажмите 5")
-                                .append(System.lineSeparator())
-                                .append("Для выхода нажмите 6")
-                                .append(System.lineSeparator())
-                                .append("------------- Выход -------------")
-                                .append(System.lineSeparator())
-                                .toString()
+                is(ADD.concat("------------ Список заявок --------------")
+                   .concat(System.lineSeparator())
+                   .concat(item.getName() + "  № " + item.getId())
+                   .concat(System.lineSeparator())
+                   .concat("-----------------------------------------")
+                   .concat(System.lineSeparator())
+                   .concat(ADD)
+                   .concat("------------- Выход -------------")
+                   .concat(System.lineSeparator())
                 ));
     }
 }
