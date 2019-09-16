@@ -73,7 +73,7 @@ public class StartUITest {
     }
     @Test
     public void whenUserAddItem() {
-        Tracker tracker = new Tracker();    
+        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("new item", "new desc"));
         Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker).init();
