@@ -1,34 +1,21 @@
 package ru.job4j.tracker;
 
 public class StubInput implements Input {
-    /**
-     * Это поле содержит последовательность ответов пользователя.
-     * Например. Если пользователь
-     * хочет выбрать добавление новой заявки ему нужно ввести:
-     * 0 - выбор пункта меня "добавить новую заявку".
-     * name - имя заявки
-     * desc - описание заявки
-     * y - выйти из трекера.
-     */
+
     private String[] answers;
-    /**
-     * Поле считает количество вызовом метода ask.
-     * При каждом вызове надо передвинуть указатель на новое число.
-     */
     private int position = 0;
 
-    public StubInput(String[] answer) {
-        this.answers = answer;
+    public StubInput(String[] answers) {
+        this.answers = answers;
     }
-    /**
-     * Давайте рассмотрим, как работает этот метод.
-     * у нас есть объект в котором содержатся заранее продуманные ответы.
-     * При последовательном вызове метода ask нам надо возвращать соответствующие данные.
-     * Как если бы мы симулировали поведение пользователя.
-     * Для этого при каждом вызове метода ask мы увеличиваем счетчик и
-     * при следующем вызове он вернет нам новое значение.
-     */
-    public String ask(String question) {
-        return this.answers[position++];
+
+    @Override
+    public String askStr(String question) {
+        return answers[position++];
+    }
+
+    @Override
+    public int askInt(String question) {
+        return Integer.valueOf(askStr(question));
     }
 }
