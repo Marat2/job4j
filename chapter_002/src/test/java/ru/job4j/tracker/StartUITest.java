@@ -23,36 +23,6 @@ public class StartUITest {
         new StartUI().init(input, new Tracker(), new UserAction[] { action });
         assertThat(action.isCall(), is(true));
     }
-    @Test
-    public void whenAddItemAndShow() {
-        StubInput input = new StubInput(new String[] {"0","new item","new desc"});
-        ShowStubInput show = new ShowStubInput();
-        new StartUI().init(input,new Tracker(),new UserAction[] { show });
-        assertThat(show.isCall(),is(true));
-    }
-    @Test
-    public void whenAddItemChangeAndShow() {
-        Tracker tracker=new Tracker();
-        Item item=new Item("new item","new desc");
-        tracker.add(item);
-        StubInput input = new StubInput(new String[] {"0",item.getId(),"change item","change desc"});
-        ReplaceStubAction show = new ReplaceStubAction();
-        new StartUI().init(input,tracker,new UserAction[] { show });
-        assertThat(show.isCall(),is(true));
-    }
-
-    @Test
-    public void whenAddTwoItemChangeSecondDeleteFirstAndShow() {
-        Tracker tracker=new Tracker();
-        Item first=new Item("first item","first desc");
-        Item second=new Item("second item","second desc");
-        tracker.add(first);
-        tracker.add(second);
-        StubInput input = new StubInput(new String[] {"0",second.getId(),"change item","change desc",first.getId()});
-        DeleteStubInput delete = new DeleteStubInput();
-        new StartUI().init(input,tracker,new UserAction[] { delete });
-        assertThat(delete.isCall(),is(true));
-    }
 
     @Test
     public void whenShowItems() {
@@ -60,40 +30,22 @@ public class StartUITest {
         Tracker tracker=new Tracker();
         Item item=new Item("new item","new desc");
         tracker.add(item);
-        StubInput input = new StubInput(new String[] {"0"});
-        ShowStubAction show = new ShowStubAction();
-        new StartUI().init(input,tracker,new UserAction[] { show });
+        StubInput input = new StubInput(new String[] {"0","1"});
+        ShowAction show = new ShowAction();
+        ExitAction exit = new ExitAction();
+        new StartUI().init(input,tracker,new UserAction[] { show,exit });
         assertThat(
                 out.toString(),
                 is(
                         new StringBuilder()
                                 .append("Menu.").append(System.lineSeparator())
                                 .append("0. === Show all items ====").append(System.lineSeparator())
-                                .append("№"+item.getId()+"   name :  new item")
-                                .append(System.lineSeparator())
-                                .toString()
-                )
-        );
-        this.backOutput();
-    }
-
-    @Test
-    public void whenFinItemByid() {
-        this.loadOutput();
-        Tracker tracker=new Tracker();
-        Item item=new Item("new item","new desc");
-        tracker.add(item);
-        StubInput input = new StubInput(new String[] {"0",item.getId()});
-        FindByIdStubAction find = new FindByIdStubAction();
-        new StartUI().init(input,tracker,new UserAction[] { find });
-        assertThat(
-                out.toString(),
-                is(
-                        new StringBuilder()
-                                .append("Menu.").append(System.lineSeparator())
-                                .append("0. === Find item by Id ====").append(System.lineSeparator())
+                                .append("1. === Exit ====").append(System.lineSeparator())
                                 .append("№"+item.getId()+"     new item")
                                 .append(System.lineSeparator())
+                                .append("Menu.").append(System.lineSeparator())
+                                .append("0. === Show all items ====").append(System.lineSeparator())
+                                .append("1. === Exit ====").append(System.lineSeparator())
                                 .toString()
                 )
         );
