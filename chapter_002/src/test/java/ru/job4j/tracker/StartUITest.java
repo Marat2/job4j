@@ -35,7 +35,7 @@ public class StartUITest {
         ExitAction exit = new ExitAction();
         new StartUI().init(input,tracker,new UserAction[] { show,exit });
         assertThat(
-                out.toString(), 
+                out.toString(),
                 is(
                         new StringBuilder()
                                 .append("Menu.").append(System.lineSeparator())
