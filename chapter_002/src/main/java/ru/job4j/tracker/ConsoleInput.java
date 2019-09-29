@@ -9,9 +9,6 @@ public class ConsoleInput implements Input {
     @Override
     public String askStr(String question) {
         System.out.print(question);
-        if (!isNumeric(scanner.nextLine())){
-            throw new NumberFormatException(String.format("Please enter validate data again "));
-        }
         return scanner.nextLine();
     }
 
@@ -30,18 +27,4 @@ public class ConsoleInput implements Input {
 
         return select;
     }
-    public boolean isNumeric(String str) {
-
-        if (str == null || str.length() == 0) {
-            return false;
-        }
-
-        try {
-            Integer.parseInt(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
 }

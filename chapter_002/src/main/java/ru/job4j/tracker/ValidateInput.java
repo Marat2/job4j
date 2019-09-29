@@ -23,7 +23,7 @@ public class ValidateInput  implements Input {
         int value = -1;
         do {
             try {
-                value = input.askInt(question);
+                value = input.askInt(question, max);
                 invalid = false;
             } catch (IllegalStateException moe) {
                 System.out.println("Please select key from menu ");
