@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-public class AddItem extends BaseAction/*implements UserAction*/ {
+public class AddItem extends BaseAction {
     public AddItem(int key, String name) {
         super(key, name);
     }
@@ -11,15 +11,4 @@ public class AddItem extends BaseAction/*implements UserAction*/ {
         String desc = input.askStr("Enter description:");
         tracker.add(new Item(name, desc));
     }
-
-    /*public AddItem( String name,int key) {
-        super(name, key);
-    }
-
-    @Override
-    public void execute(Input input, Tracker tracker) {
-        String name = input.askStr("Enter name:");
-        String desc = input.askStr("Enter description:");
-        tracker.add(new Item(name, desc));
-    }*/
 }
