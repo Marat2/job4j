@@ -12,16 +12,5 @@ public class DeleteAction  extends BaseAction /*implements UserAction*/ {
         String deleteid = input.askStr("");
         tracker.delete(deleteid);
     }
-   /* @Override
-    public String name() {
-        return "=== Delete item ====";
-    }
 
-    @Override
-    public boolean execute(Input input, Tracker tracker) {
-        System.out.print("Enter item id: ");
-        String deleteid = input.askStr("");
-        tracker.delete(deleteid);
-        return true;
-    }*/
 }

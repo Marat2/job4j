@@ -11,16 +11,5 @@ public class FindByIdAction extends BaseAction /*implements UserAction*/ {
         String showid = input.askStr("");
         tracker.findById(showid);
     }
-    /*@Override
-    public String name() {
-        return "=== Find item by Id ====";
-    }
 
-    @Override
-    public boolean execute(Input input, Tracker tracker) {
-        System.out.print("Enter item id: ");
-        String showid = input.askStr("");
-        tracker.findById(showid);
-        return true;
-    }*/
 }

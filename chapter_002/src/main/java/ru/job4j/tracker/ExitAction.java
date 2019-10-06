@@ -1,13 +1,14 @@
 package ru.job4j.tracker;
 
-public class ExitAction /*implements UserAction*/ {
-    /*@Override
-    public String name() {
-        return "=== Exit ====";
+public class ExitAction extends BaseAction {
+    protected ExitAction(int key, String name) {
+        super(key, name);
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
-        return false;
-    }*/
+    public void execute(Input input, Tracker tracker) {
+
+    }
+
+
 }
