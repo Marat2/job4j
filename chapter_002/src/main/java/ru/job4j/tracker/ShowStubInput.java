@@ -1,7 +1,21 @@
 package ru.job4j.tracker;
 
 public class ShowStubInput implements UserAction  {
-    private boolean call = false;
+    @Override
+    public int key() {
+        return 0;
+    }
+
+    @Override
+    public void execute(Input input, Tracker tracker) {
+
+    }
+
+    @Override
+    public String info() {
+        return null;
+    }
+    /*private boolean call = false;
 
     @Override
     public String name() {
@@ -24,5 +38,5 @@ public class ShowStubInput implements UserAction  {
 
     public boolean isCall() {
         return call;
-    }
+    }*/
 }

@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 public class ShowAction extends BaseAction  /*implements UserAction*/ {
 
     public ShowAction(int key, String name) {
-        super(key,name);
+        super(key, name);
     }
 
     @Override
