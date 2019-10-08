@@ -31,6 +31,13 @@ public class TrackerTest {
         TrackerFourth tracker1 = TrackerFourth.getInstance();
         assertEquals(tracker.hashCode(), tracker1.hashCode());
     }
+    @Test
+    public void testSingleton() {
+        TrackerSecond instance1 = TrackerSecond.getInstance();
+        TrackerSecond instance2 = TrackerSecond.getInstance();
+        assertEquals(true, instance1==instance2);
+
+    }
     /*@Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
