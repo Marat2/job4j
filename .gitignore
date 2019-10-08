@@ -26,7 +26,10 @@ hs_err_pid*
 target/
 .idea/
 puzzle/target/
+puzzle/puzzle.iml
 chapter_001/target
 chapter_001/chapter_001.iml
 chapter_002/target
 chapter_002/chapter_001.iml
+chapter_002/chapter_002.iml
+ru.job4j.iml
