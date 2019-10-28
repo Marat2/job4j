@@ -8,25 +8,25 @@ import static org.junit.Assert.assertThat;
 
 public class TrackerTest {
     @Test
-    public void firstVersionSingltonTest(){
+    public void firstVersionSingltonTest() {
         TrackerFirst tracker = TrackerFirst.INSTANCE;
         TrackerFirst tracker1 = TrackerFirst.INSTANCE;
         assertEquals(tracker.hashCode(), tracker1.hashCode());
     }
     @Test
-    public void secondVersionSingltonTest(){
-        TrackerSecond tracker = TrackerSecond.getInstance ();
-        TrackerSecond tracker1 = TrackerSecond.getInstance ();
+    public void secondVersionSingltonTest() {
+        TrackerSecond tracker = TrackerSecond.getInstance();
+        TrackerSecond tracker1 = TrackerSecond.getInstance();
         assertEquals(tracker.hashCode(), tracker1.hashCode());
     }
     @Test
-    public void thirdVersionSingltonTest(){
+    public void thirdVersionSingltonTest() {
         TrackerThird tracker = TrackerThird.getInstance();
         TrackerThird tracker1 = TrackerThird.getInstance();
         assertEquals(tracker.hashCode(), tracker1.hashCode());
     }
     @Test
-    public void fourthVersionSingltonTest(){
+    public void fourthVersionSingltonTest() {
         TrackerFourth tracker = TrackerFourth.getInstance();
         TrackerFourth tracker1 = TrackerFourth.getInstance();
         assertEquals(tracker.hashCode(), tracker1.hashCode());
@@ -35,7 +35,7 @@ public class TrackerTest {
     public void testSingleton() {
         TrackerSecond instance1 = TrackerSecond.getInstance();
         TrackerSecond instance2 = TrackerSecond.getInstance();
-        assertEquals(true, instance1==instance2);
+        assertEquals(true, instance1 == instance2);
 
     }
     /*@Test

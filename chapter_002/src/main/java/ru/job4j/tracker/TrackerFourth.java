@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class TrackerFourth {
-    private static final class TrackerHolder{
+    private static final class TrackerHolder {
         private static final TrackerFourth INSTANCE = new TrackerFourth();
     }
     private TrackerFourth() {

@@ -5,17 +5,17 @@ public class StartUI {
     public void init(Input input, Tracker tracker) {
 
         Input validate = new ValidateInput(input);
-        MenuTracker menuTracker = new MenuTracker(validate,tracker);
+        MenuTracker menuTracker = new MenuTracker(validate, tracker);
         menuTracker.fillActions(this);
 
         while (this.run) {
             menuTracker.show();
-            int select = input.askInt("Select: ",menuTracker.getActionsLentgh());
+            int select = input.askInt("Select: ", menuTracker.getActionsLentgh());
             menuTracker.select(select);
         }
     }
 
-    public void stop(){
-        this.run=false;
+    public void stop() {
+        this.run = false;
     }
 }

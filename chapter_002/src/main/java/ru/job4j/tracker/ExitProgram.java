@@ -6,7 +6,7 @@ public class ExitProgram extends BaseAction  {
 
     public ExitProgram(int key, String name, StartUI ui) {
         super(key, name);
-        this.ui=ui;
+        this.ui = ui;
     }
     @Override
     public void execute(Input input, Tracker tracker) {
