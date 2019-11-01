@@ -18,8 +18,8 @@ public class PhoneDictionary {
     public List<Person> find(String key) {
         List<Person> result = new ArrayList<>();
         Iterator<Person> itr = persons.iterator();
-        while(itr.hasNext()){
-            Person cur=itr.next();
+        while (itr.hasNext()) {
+            Person cur = itr.next();
             if (cur.getName().contains(key) || cur.getSurname().contains(key) || cur.getPhone().contains(key) || cur.getAddress().contains(key)) {
                 result.add(cur);
             }

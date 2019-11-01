@@ -17,7 +17,7 @@ public class PhoneDictionaryTest {
         assertThat(persons.iterator().next().getSurname(), is("Arsentev"));
     }
     @Test
-    public void findSet(){
+    public void findSet() {
         PhoneDictionary phones = new PhoneDictionary();
         Person one = new Person("Petr", "Arsentev", "534872", "Bryansk");
         Person two = new Person("Anatoliy", "Petrov", "322432", "Tashkent");
