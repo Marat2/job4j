@@ -8,7 +8,7 @@ public class ConvertList2Array {
         int rowNum = 0;
         int cellNum = 0;
         for (int i = 0; i < list.size(); i++) {
-            if (cellNum == 3) {
+            if (cellNum == cells) {
                 cellNum = 0;
                 rowNum++;
             }
