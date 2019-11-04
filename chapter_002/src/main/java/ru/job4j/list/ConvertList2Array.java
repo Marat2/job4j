@@ -7,7 +7,7 @@ public class ConvertList2Array {
     public List <Integer> convert(List<int[]> list) {
         List<Integer> result = new ArrayList<>();
         for (int[] i:list) {
-            List<Integer> list2 = new ArrayList<Integer>(i.length);
+            List<Integer> list2 = new ArrayList<Integer>();
             for(Integer text:i) {
                 list2.add(text);
             }
