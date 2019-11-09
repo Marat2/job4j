@@ -15,13 +15,13 @@ public class User implements Comparable<User>{
         return this.getAge()-o.getAge();
     }
 
-    /*@Override
+    @Override
     public String toString() {
         return "User{" +
                 "age=" + age +
                 ", name='" + name + '\'' +
                 '}';
-    }*/
+    }
 
     /*@Override
     public boolean equals(Object o) {
