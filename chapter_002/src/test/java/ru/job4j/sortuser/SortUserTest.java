@@ -15,6 +15,8 @@ public class SortUserTest {
         User one = new User("Rajeev",1010 );
         User two = new User("Sachin",1005);
         User three = new User("Chris",1008);
+        //User four = new User("Sergei",1025);
+        //User five = new User("Rajeev",1110 );
         List<User> expected=new ArrayList<>();
         expected.add(two);
         expected.add(three);
@@ -26,4 +28,9 @@ public class SortUserTest {
         Set<User> result = sortUser.sort(list);
         assertThat(result.toArray(), is(expected.toArray()));
     }
+
+    /*@Test
+    public void testConvertMethod() {
+
+    }*/
 }
