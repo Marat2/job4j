@@ -52,7 +52,7 @@ public class SortUserTest {
         User one = new User("Сергей",25 );
         User two = new User("Иван",30);
         User three = new User("Сергей",20);
-        User four = new User("Иван",26);
+        User four = new User("Иван",25);
 
         List<User> expected=new ArrayList<>();
         expected.add(four);
