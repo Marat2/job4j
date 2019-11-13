@@ -15,8 +15,7 @@ public class PriorityQueue {
         //TODO добавить вставку в связанный список.
         if (tasks.isEmpty() || tasks.peekLast().getPriority() <= task.getPriority()) {
             tasks.add(task);
-        }
-        else {
+         } else {
             ListIterator<Task> itr = tasks.listIterator(tasks.size());
             while (itr.hasPrevious()) {
                 if (itr.previous().getPriority() >= task.getPriority()) {

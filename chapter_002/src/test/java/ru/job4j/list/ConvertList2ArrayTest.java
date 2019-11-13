@@ -40,12 +40,11 @@ public class ConvertList2ArrayTest {
     @Test
     public void testConvertMethod() {
         ConvertList2Array convertList = new ConvertList2Array();
-        List<int[]> list=new ArrayList<>();
+        List<int[]> list = new ArrayList<>();
         list.add(new int[]{1, 2});
         list.add(new int[]{3, 4, 5, 6});
         List<Integer> result = convertList.convert(list);
-        int arr[] = { 1, 2, 3, 4, 5, 6};
-        //List expected = Arrays.asList(new int[]{ 1, 2, 3, 4, 5, 6});
+        int[] arr = {1, 2, 3, 4, 5, 6};
         assertThat(result.toArray(), is(arr));
     }
 }

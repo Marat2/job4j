@@ -17,9 +17,9 @@ public class Tracker {
     public boolean replace(String id, Item item) {
         boolean result = false;
         for (int x = 0; x < this.items.size(); x++) {
-            if (this.items.get(x).getId().equals(id)){
+            if (this.items.get(x).getId().equals(id)) {
                 item.setId(id);
-                this.items.set(x,item);
+                this.items.set(x, item);
                 result = true;
                 break;
             }
@@ -43,7 +43,7 @@ public class Tracker {
         List<Item> temp = new ArrayList<>();
         Item[] result = new Item[this.items.size()];
         temp.addAll(this.items);
-        result=temp.toArray(result);
+        result = temp.toArray(result);
         return result;
     }
     public Item[] findByName(String key) {
@@ -54,7 +54,7 @@ public class Tracker {
             }
         }
         Item[] result = new Item[temp.size()];
-        result=temp.toArray(result);
+        result = temp.toArray(result);
         return result;
     }
 

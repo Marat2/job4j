@@ -41,7 +41,7 @@ public class TrackerTest {
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item("test1","decs");
+        Item item = new Item("test1", "decs");
         tracker.add(item);
         Item result = tracker.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
@@ -50,11 +50,11 @@ public class TrackerTest {
     @Test
     public void whenReplaceNameThenReturnNewName() {
         Tracker tracker = new Tracker();
-        Item previous = new Item("test1","decs123");
+        Item previous = new Item("test1", "decs123");
         // Добавляем заявку в трекер. Теперь в объект проинициализирован id.
         tracker.add(previous);
         // Создаем новую заявку.
-        Item next = new Item("test2","decs43434");
+        Item next = new Item("test2", "decs43434");
         // Проставляем старый id из previous, который был сгенерирован выше.
         next.setId(previous.getId());
         // Обновляем заявку в трекере.
@@ -66,8 +66,8 @@ public class TrackerTest {
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
         Tracker expected = new Tracker();
-        Item item = new Item("test1","decs1");
-        Item next = new Item("test2","decs12");
+        Item item = new Item("test1", "decs1");
+        Item next = new Item("test2", "decs12");
         next.setId(item.getId());
         tracker.add(item);
         tracker.add(next);
@@ -79,8 +79,8 @@ public class TrackerTest {
     public void whenDeleteItemThenNoItem() {
         Tracker tracker = new Tracker();
         Tracker expected = new Tracker();
-        Item item = new Item("test1","decs23");
-        Item next = new Item("test2","decs22");
+        Item item = new Item("test1", "decs23");
+        Item next = new Item("test2", "decs22");
         next.setId(item.getId());
         tracker.add(item);
         tracker.add(next);
@@ -91,8 +91,8 @@ public class TrackerTest {
     @Test
     public void findAllItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item("test1","decs3232");
-        Item next = new Item("test2","decs333");
+        Item item = new Item("test1", "decs3232");
+        Item next = new Item("test2", "decs333");
         next.setId(item.getId());
         tracker.add(item);
         tracker.add(next);
@@ -101,9 +101,9 @@ public class TrackerTest {
     @Test
     public void findByNameItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item("test1","decs6");
-        Item next = new Item("test2","decs7");
-        Item third = new Item("test1","decs8");
+        Item item = new Item("test1", "decs6");
+        Item next = new Item("test2", "decs7");
+        Item third = new Item("test1", "decs8");
         next.setId(item.getId());
         tracker.add(item);
         tracker.add(next);
