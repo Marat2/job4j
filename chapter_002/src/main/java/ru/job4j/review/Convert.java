@@ -32,7 +32,7 @@ public class Convert {
         /*int cells = (int) Math.ceil((double) list.size() / rows);
         int[][] array = new int[rows][cells];
         int rowNum = 0;
-        int cellNum = 0; 
+        int cellNum = 0;
         for (int i = 0; i < list.size(); i++) {
             if (cellNum == cells) {
                 cellNum = 0;
@@ -41,7 +41,7 @@ public class Convert {
             array[rowNum][cellNum] = list.get(i);
             cellNum++;
         }
-        return array;*/
+        return array;*/ 
         int[][] array = new int[rws][cls];
         for (int i = 0; i < rws; i++) {
             for (int j = 0; j < cls; j++) {
