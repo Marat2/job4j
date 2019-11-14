@@ -1,8 +1,6 @@
 package ru.job4j.review;
 
 
-import ru.job4j.sortuser.User;
-
 import java.util.*;
 //нет класса User
 public class Sorter {
