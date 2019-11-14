@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-public class Bank {  
+public class Bank {
 
     private TreeMap<User, ArrayList<Account>> treemap = new TreeMap<>();//не определены аргументы. Отсутствие класса User(import)
 
