@@ -5,7 +5,7 @@ import java.util.Comparator;
 public class ListCompare  implements Comparator<String> {
     @Override
     public  int compare(String left, String right) {
-        int result = Integer.compare(left.length(), right.length());
+        int result =left.length()- right.length();
         int length = right.length();
         if (result < 0) {
             length = left.length();

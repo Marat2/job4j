@@ -57,4 +57,13 @@ public class StringsCompareTest {
         );
         assertThat(rst, lessThan(0));
     }
+    @Test
+    public void testtestset() {
+        ListCompare compare = new ListCompare();
+        int rst = compare.compare(
+                "abc",
+                "abcdefgh"
+        );
+        assertThat(rst, lessThan(0));
+    }
 }
