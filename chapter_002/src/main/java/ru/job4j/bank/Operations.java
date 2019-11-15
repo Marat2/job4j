@@ -26,6 +26,6 @@ public class Operations {
 
     public List<Account> getUserAccounts(String passport) {
         List<Account> accounts = new ArrayList<Account>();
-        return accounts;
+        return accounts; 
     }
 }
