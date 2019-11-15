@@ -7,20 +7,20 @@ import java.util.*;
 //нет класса User
 public class Sorter {
     //зачем тут нужен конструктор в таком виде лучше убрать
-    public Sorter(){
+    public Sorter() {
 
     }
 
-    Set<User> sort (List<User> list) {//можно сразу отправить list в treeset
+    Set<User> sort(List<User> list) { //можно сразу отправить list в treeset
         TreeSet<User> sortedList = new TreeSet<>();
         sortedList.addAll(list);
         return sortedList;
     }
 
-    List<User> sortnamelength (List<User> list) {//здесь бы лучше ис-ть кострукцию типа list.sort(Comporator.comparingInt(o->o.getName.length()))
+    List<User> sortnamelength(List<User> list) { //здесь бы лучше ис-ть кострукцию типа list.sort(Comporator.comparingInt(o->o.getName.length()))
         Comparator<User> compar = new Comparator<User>() {
             @Override
-            public int compare (User o1, User o2) {
+            public int compare(User o1, User o2) {
                 return o1.getName().length() - o2.getName().length();
             }
         };
@@ -28,16 +28,16 @@ public class Sorter {
         return list;
     }
 
-    List<User> sortboth (List<User> list) {//здесь бы лучше ис-ть кострукцию типа list.sort(Comporator.comparing(o->o.getName()).thenComparing(o->o.getAge()))
+    List<User> sortboth(List<User> list) { //здесь бы лучше ис-ть кострукцию типа list.sort(Comporator.comparing(o->o.getName()).thenComparing(o->o.getAge()))
         Comparator<User> compar1 = new Comparator<User>() {
             @Override
-            public int compare (User o1, User o2) {
+            public int compare(User o1, User o2) {
                 return o1.getName().compareTo(o2.getName());
             }
         };
         Comparator<User> compar2 = new Comparator<User>() {
             @Override
-            public int compare (User o1, User o2) {
+            public int compare(User o1, User o2) {
                 return o1.getAge() - o2.getAge();
             }
         };

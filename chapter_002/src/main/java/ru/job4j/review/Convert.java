@@ -5,16 +5,17 @@ import java.util.*;
 
 public class Convert {
         //зачем тут нужен конструктор в таком виде лучше убрать
-    public Convert(){
+    public Convert() {
 
     }
 
     //Converts array to list
-    List<Integer> makeList(int[][] array) {//явно не определен модификатор доступа
+    List<Integer> makeList(int[][] array) { //явно не определен модификатор доступа
         ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++)
+            for (int j = 0; j < array[i].length; j++) {
                 list.add(array[i][j]);
+            }
         }
         return list;
     }
@@ -23,7 +24,7 @@ public class Convert {
     //Converts list to array
     public int[][] makeArray(List<Integer> list, int rws) {
         Iterator<Integer> iterator = list.iterator();
-        int cls = list.size() / rws + (list.size() % rws == 0 ? 0 : 1);//можно результат деления округлять в больщую сторону через MAth.ceil
+        int cls = list.size() / rws + (list.size() % rws == 0 ? 0 : 1); //можно результат деления округлять в больщую сторону через MAth.ceil
                                                                        //не используя такую конструкцию.
         //с одной стороны можно было конечно не создавать итератор
         // и просто пройтись по списку используя верхний предел list.size()
@@ -45,11 +46,11 @@ public class Convert {
         int[][] array = new int[rws][cls];
         for (int i = 0; i < rws; i++) {
             for (int j = 0; j < cls; j++) {
-                if (iterator.hasNext())
+                if (iterator.hasNext()) {
                     array[i][j] = iterator.next();
-                else
-                    array[i][j] = 0;//нет смысла заполнять остатки нулями т.к. массив типа int на все незаполненные ячейки последний строки
-                                    //автоматом перевоит в 0
+                } else {
+                    array[i][j] = 0; //нет смысла заполнять остатки нулями т.к. массив типа int на все незаполненные ячейки последний строки
+                }                   //автоматом перевоит в 0
             }
         }
         return array;

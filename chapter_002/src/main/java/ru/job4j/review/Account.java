@@ -3,10 +3,10 @@ package ru.job4j.review;
 
 public class Account {
 
-    double values;//желательно указывать модификатор доступа.
+    double values; //желательно указывать модификатор доступа.
     String reqs;
 
-    public Account(double values, String requisites) {//названия лучше бы соответствовали полям класса
+    public Account(double values, String requisites) { //названия лучше бы соответствовали полям класса
         this.values = values;
         this.reqs = requisites;
     }
@@ -16,7 +16,7 @@ public class Account {
     }
 
 
-    public String getReqs () {
+    public String getReqs() {
         return this.reqs;
     }
 
@@ -30,13 +30,13 @@ public class Account {
         return success;
     }
 
-    public String toString() {// на мой взгляд лучше сделать Тип название = значение (можно конечно сразу ретурнить строку с подстановкой но помоему это не очень).
+    public String toString() { // на мой взгляд лучше сделать Тип название = значение (можно конечно сразу ретурнить строку с подстановкой но помоему это не очень).
         String otvet;
         otvet = "Account{" + "values=" + values + ", reqs='" + reqs + "\\" + "}";
         return otvet;
     }
 
-    public boolean equals(Object o) {//несколько раз возвращается return - хорошо бы сделать один
+    public boolean equals(Object o) { //несколько раз возвращается return - хорошо бы сделать один
         if (this == o) {
             return true;
         }

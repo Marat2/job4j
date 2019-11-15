@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 public class Bank {
 
-    private TreeMap<User, ArrayList<Account>> treemap = new TreeMap<>();//не определены аргументы. Отсутствие класса User(import)
+    private TreeMap<User, ArrayList<Account>> treemap = new TreeMap<>(); //не определены аргументы. Отсутствие класса User(import)
 
     public void addUser(User user) {
         this.treemap.put(user, new ArrayList<>());
@@ -35,7 +35,7 @@ public class Bank {
         return this.treemap.get(user);
     }
 
-    public boolean transfer(User user1, Account account1,User user2, Account account2, double amount) {
+    public boolean transfer(User user1, Account account1, User user2, Account account2, double amount) {
         return this.treemap.get(user1).contains(account1) && this.treemap.get(user2).contains(account2) && getActualAccount(user1, account1).transfer(getActualAccount(user2, account2), amount);
     }
     public String toString() {
