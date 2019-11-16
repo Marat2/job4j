@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 public class Bank {
 
-    private TreeMap<User, ArrayList<Account>> treemap = new TreeMap<>(); //не определены аргументы. Отсутствие класса User(import)
+    private TreeMap<User, ArrayList<Account>> treemap = new TreeMap<>(); //Отсутствие класса User(import)
 
     public void addUser(User user) {
         this.treemap.put(user, new ArrayList<>());
