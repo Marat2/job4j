@@ -13,7 +13,7 @@ public class User implements Comparable<User>  {
     }
     @Override
     public boolean equals(Object o) {
-        return this.passport.equals(((User)o).passport);
+        return this.passport.equals(((User) o).passport);
     }
     //по идее у пользователей должны быть разные паспортные данные поэтому я для улучшения производительности решил
     //в качестве хеша ис-ть серию паспорта.
