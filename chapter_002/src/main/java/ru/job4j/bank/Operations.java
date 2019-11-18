@@ -8,12 +8,12 @@ import java.util.HashMap;
 public class Operations {
     private Map<User, List<Account>> accounts = new  HashMap<User, List<Account>>();
 
-    public Map<User, List<Account>> getAccounts(){
+    public Map<User, List<Account>> getAccounts() {
         return this.accounts;
     }
 
     public void addUser(User user) {
-        this.accounts.putIfAbsent(user,new ArrayList<Account>());
+        this.accounts.putIfAbsent(user, new ArrayList<Account>());
     }
 
     public void deleteUser(User user) {
@@ -31,15 +31,15 @@ public class Operations {
     public List<Account> getUserAccounts(String passport) {
         return this.accounts.get(new User(passport));
     }
-    public boolean transferMoney (String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount){
+    public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
         boolean result = false;
         List<Account> userAccounts = this.accounts.get(new User(srcPassport));
         Account userAccount = userAccounts.get(userAccounts.indexOf(new Account(srcRequisite)));
-        if(userAccount.getValue()>=amount) {
-            userAccount.setValue(userAccount.getValue()-amount);
+        if (userAccount.getValue() >= amount) {
+            userAccount.setValue(userAccount.getValue() - amount);
             List<Account> descAccounts = this.accounts.get(new User(destPassport));
             Account destAccount = descAccounts.get(descAccounts.indexOf(new Account(dstRequisite)));
-            destAccount.setValue(destAccount.getValue()+amount);
+            destAccount.setValue(destAccount.getValue() + amount);
             result = true;
         }
         return result;

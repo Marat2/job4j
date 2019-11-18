@@ -6,13 +6,13 @@ public class Account {
     private double value;
     private String requisites;
 
-    Account(String requisites){
-        this.requisites=requisites;
+    Account(String requisites) {
+        this.requisites = requisites;
     }
 
-    Account(String requisites,double value){
-        this.requisites=requisites;
-        this.value=value;
+    Account(String requisites, double value) {
+        this.requisites = requisites;
+        this.value = value;
     }
 
     public String getRequisites() {
@@ -27,8 +27,7 @@ public class Account {
         return this.requisites.equals(((Account) o).requisites);
     }
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hash(requisites);
     }
     @Override
