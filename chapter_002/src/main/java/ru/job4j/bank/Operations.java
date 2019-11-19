@@ -21,19 +21,36 @@ public class Operations {
     }
 
     public void addAccountToUser(String passport, Account account) {
-        this.accounts.get(new User(passport)).add(account);
+        for (Map.Entry<User, List<Account>> acc:this.accounts.entrySet()) {
+            if (acc.getKey().getPassport().equals(passport)) {
+                acc.getValue().add(account);
+                break;
+            }
+        }
     }
 
     public void deleteAccountFromUser(String passport, Account account) {
-        this.accounts.get(new User(passport)).remove(account);
+        for (Map.Entry<User, List<Account>> acc:this.accounts.entrySet()) {
+            if (acc.getKey().getPassport().equals(passport)) {
+                acc.getValue().remove(account);
+                break;
+            }
+        }
     }
 
     public List<Account> getUserAccounts(String passport) {
-        return this.accounts.get(new User(passport));
+        List<Account> accounts = null;
+        for (Map.Entry<User, List<Account>> acc:this.accounts.entrySet()) {
+            if (acc.getKey().getPassport().equals(passport)) {
+                accounts = acc.getValue();
+                break;
+            }
+        }
+        return accounts;
     }
     public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
         boolean result = false;
-        List<Account> userAccounts = this.accounts.get(new User(srcPassport));
+        List<Account> userAccounts = this.getUserAccounts(srcPassport);
         Account userAccount = null;
         for (Account account:userAccounts) {
             if (account.equals(new Account(srcRequisite))) {
@@ -44,7 +61,7 @@ public class Operations {
         try {
             if (userAccount.getValue() >= amount) {
                 userAccount.setValue(userAccount.getValue() - amount);
-                List<Account> descAccounts = this.accounts.get(new User(destPassport));
+                List<Account> descAccounts = this.getUserAccounts(destPassport);
                 Account destAccount = null;
                 for (Account account:descAccounts) {
                     if (account.equals(new Account(dstRequisite))) {
