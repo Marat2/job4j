@@ -53,7 +53,7 @@ public class Operations {
         List<Account> userAccounts = this.getUserAccounts(srcPassport);
         Account userAccount = null;
         for (Account account:userAccounts) {
-            if (account.equals(new Account(srcRequisite))) {
+            if (account.getRequisites().equals(srcRequisite)) {
                 userAccount = account;
                 break;
             }
@@ -64,7 +64,7 @@ public class Operations {
                 List<Account> descAccounts = this.getUserAccounts(destPassport);
                 Account destAccount = null;
                 for (Account account:descAccounts) {
-                    if (account.equals(new Account(dstRequisite))) {
+                    if (account.getRequisites().equals(dstRequisite)) {
                         destAccount = account;
                         break;
                     }
