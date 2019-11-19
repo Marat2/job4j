@@ -34,13 +34,29 @@ public class Operations {
     public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
         boolean result = false;
         List<Account> userAccounts = this.accounts.get(new User(srcPassport));
-        Account userAccount = userAccounts.get(userAccounts.indexOf(new Account(srcRequisite)));
-        if (userAccount.getValue() >= amount) {
-            userAccount.setValue(userAccount.getValue() - amount);
-            List<Account> descAccounts = this.accounts.get(new User(destPassport));
-            Account destAccount = descAccounts.get(descAccounts.indexOf(new Account(dstRequisite)));
-            destAccount.setValue(destAccount.getValue() + amount);
-            result = true;
+        Account userAccount = null;
+        for (Account account:userAccounts) {
+            if (account.equals(new Account(srcRequisite))) {
+                userAccount = account;
+                break;
+            }
+        }
+        try {
+            if (userAccount.getValue() >= amount) {
+                userAccount.setValue(userAccount.getValue() - amount);
+                List<Account> descAccounts = this.accounts.get(new User(destPassport));
+                Account destAccount = null;
+                for (Account account:descAccounts) {
+                    if (account.equals(new Account(dstRequisite))) {
+                        destAccount = account;
+                        break;
+                    }
+                }
+                destAccount.setValue(destAccount.getValue() + amount);
+                result = true;
+            }
+        } catch (NullPointerException e) {
+            System.out.print("NullPointerException caught");
         }
         return result;
     }

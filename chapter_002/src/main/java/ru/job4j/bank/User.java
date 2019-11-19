@@ -7,11 +7,11 @@ public class User implements Comparable<User>  {
     private String name;
     private String passport;
 
-    User(String passport) {
+    public User(String passport) {
         this.passport = passport;
     }
 
-    User(String passport, String name) {
+    public User(String passport, String name) {
         this.passport = passport;
         this.name = name;
     }
