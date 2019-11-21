@@ -21,32 +21,14 @@ public class Operations {
     }
 
     public void addAccountToUser(String passport, Account account) {
-        for (Map.Entry<User, List<Account>> acc:this.accounts.entrySet()) {
-            if (acc.getKey().getPassport().equals(passport)) {
-                acc.getValue().add(account);
-                break;
-            }
-        }
+        this.getAccounts(passport).add(account);
     }
-
     public void deleteAccountFromUser(String passport, Account account) {
-        for (Map.Entry<User, List<Account>> acc:this.accounts.entrySet()) {
-            if (acc.getKey().getPassport().equals(passport)) {
-                acc.getValue().remove(account);
-                break;
-            }
-        }
+        this.getAccounts(passport).remove(account);
     }
 
     public List<Account> getUserAccounts(String passport) {
-        List<Account> accounts = null;
-        for (Map.Entry<User, List<Account>> acc:this.accounts.entrySet()) {
-            if (acc.getKey().getPassport().equals(passport)) {
-                accounts = acc.getValue();
-                break;
-            }
-        }
-        return accounts;
+        return this.getAccounts(passport);
     }
     public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
         boolean result = false;
@@ -69,5 +51,15 @@ public class Operations {
             }
         }
         return userAccount;
+    }
+    public List<Account> getAccounts(String passport) {
+        List<Account> accounts = new ArrayList<Account>();
+        for (Map.Entry<User, List<Account>> acc:this.accounts.entrySet()) {
+            if (acc.getKey().getPassport().equals(passport)) {
+                accounts = acc.getValue();
+                break;
+            }
+        }
+        return accounts;
     }
 }

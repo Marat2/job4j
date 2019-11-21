@@ -7,10 +7,6 @@ public class User implements Comparable<User>  {
     private String name;
     private String passport;
 
-    public User(String passport) {
-        this.passport = passport;
-    }
-
     public User(String passport, String name) {
         this.passport = passport;
         this.name = name;
@@ -20,14 +16,7 @@ public class User implements Comparable<User>  {
     public int compareTo(User o) {
         return 0;
     }
-    /*@Override
-    public boolean equals(Object o) {
-        return this.passport.equals(((User) o).passport);
-    }
-    @Override
-    public int hashCode() {
-        return  Objects.hash(this.passport);
-    }*/
+
     @Override
     public String toString() {
         return "User{"
@@ -41,8 +30,6 @@ public class User implements Comparable<User>  {
                 +
                 '}';
     }
-    //по идее у пользователей должны быть разные паспортные данные поэтому я для улучшения производительности решил
-    //в качестве хеша ис-ть серию паспорта.
 
 
     public String getPassport() {

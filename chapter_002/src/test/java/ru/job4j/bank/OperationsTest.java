@@ -31,8 +31,8 @@ public class OperationsTest {
     @Test
     public void addAccountToUser() {
         User testUser = new User("22788339", "Ivan");
-        Account firstUserAccount = new Account("mh88945");
-        Account secondUserAccount = new Account("mh788945");
+        Account firstUserAccount = new Account("mh88945", 0);
+        Account secondUserAccount = new Account("mh788945", 0);
         Operations testAction = new Operations();
         testAction.addUser(testUser);
         testAction.addAccountToUser(testUser.getPassport(), firstUserAccount);
@@ -43,8 +43,8 @@ public class OperationsTest {
     @Test
     public void deleteUserAccount() {
         User testUser = new User("22788339", "Ivan");
-        Account firstUserAccount = new Account("mh88945");
-        Account secondUserAccount = new Account("mh788945");
+        Account firstUserAccount = new Account("mh88945", 0);
+        Account secondUserAccount = new Account("mh788945", 0);
         Operations testAction = new Operations();
         testAction.addUser(testUser);
         testAction.addAccountToUser(testUser.getPassport(), firstUserAccount);
@@ -57,7 +57,7 @@ public class OperationsTest {
     public void addMoneyToUserAccount() {
         User testUser = new User("22788339", "Ivan");
         Account firstUserAccount = new Account("mh88945", 10.0);
-        Account secondUserAccount = new Account("mh788945");
+        Account secondUserAccount = new Account("mh788945", 0);
         Operations testAction = new Operations();
         testAction.addUser(testUser);
         testAction.addAccountToUser(testUser.getPassport(), firstUserAccount);
@@ -71,7 +71,7 @@ public class OperationsTest {
         User testUser = new User("22788339", "Ivan");
         User testUser1 = new User("22228339", "Sergei");
         Account firstUserAccount = new Account("mh88945", 10.0);
-        Account secondUserAccount = new Account("mh788945");
+        Account secondUserAccount = new Account("mh788945", 0);
         Operations testAction = new Operations();
         testAction.addUser(testUser);
         testAction.addUser(testUser1);
