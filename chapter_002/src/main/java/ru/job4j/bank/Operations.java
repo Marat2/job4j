@@ -37,8 +37,10 @@ public class Operations {
             if (userAccount.getValue() >= amount) {
                 userAccount.setValue(userAccount.getValue() - amount);
                 Account destAccount = getAccount(destPassport, dstRequisite);
-                destAccount.setValue(destAccount.getValue() + amount);
-                result = true;
+                if (destAccount != null) {
+                    destAccount.setValue(destAccount.getValue() + amount);
+                    result = true;
+                }
             }
         }
         return result;
