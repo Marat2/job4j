@@ -33,12 +33,14 @@ public class Operations {
     public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
         boolean result = false;
         Account userAccount = getAccount(srcPassport, srcRequisite);
+        if (userAccount != null) {
             if (userAccount.getValue() >= amount) {
                 userAccount.setValue(userAccount.getValue() - amount);
                 Account destAccount = getAccount(destPassport, dstRequisite);
                 destAccount.setValue(destAccount.getValue() + amount);
                 result = true;
             }
+        }
         return result;
     }
     private Account getAccount(String passport, String requisite) {
