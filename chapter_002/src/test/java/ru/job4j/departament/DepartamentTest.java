@@ -19,7 +19,7 @@ public class DepartamentTest {
         list.add("K2\\SK1\\SSK2");
         Departure d = new Departure(list);
         List<String> departamentList = d.fillGaps(list);
-        System.out.println(d.desc(departamentList).toString());
+        System.out.println(d.abs(departamentList).toString());
     }
 
 }

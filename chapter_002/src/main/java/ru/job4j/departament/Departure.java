@@ -15,7 +15,7 @@ public class Departure {
     }
     public List<String> desc(List<String> orgs) {
         Comparator c = Collections.reverseOrder();
-        Collections.sort(orgs, new NameCompare().thenComparing(new CompareByLength()));
+        Collections.sort(orgs, new NameCompare().thenComparing(new CompareByLength()).thenComparing(new CompareByLastDesc()));
         return orgs;
     }
     public List<String> fillGaps(List<String> orgs) {
