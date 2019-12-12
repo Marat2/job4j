@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.function.Consumer;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
@@ -12,10 +13,11 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class StartUITest {
-    private final PrintStream stdout = System.out;
+    //private final PrintStream stdout = System.out;
     // буфер для результата.
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
-
+    private final Consumer<String> output = (x) -> System.out.println(x.toLowerCase());
+        private final PrintStream stdout = new PrintStream(out);
     /*@Test
     public void whenExit() {
         StubInput input = new StubInput(new String[] {"0"});
@@ -32,27 +34,27 @@ public class StartUITest {
         tracker.add(item);
         StubInput input = new StubInput(new String[] {"1", "6"});
 
-        new StartUI().init(input, tracker);
+        new StartUI(input, tracker, output).init();
         assertThat(
                 out.toString(),
                 is(
                         new StringBuilder()
-                                .append("0 : Add Item").append(System.lineSeparator())
-                                .append("1 : Show all items").append(System.lineSeparator())
-                                .append("2 : Edit item").append(System.lineSeparator())
-                                .append("3 : Delete item").append(System.lineSeparator())
-                                .append("4 : Find item by Id").append(System.lineSeparator())
-                                .append("5 : Find items by name").append(System.lineSeparator())
-                                .append("6 : Exit Program").append(System.lineSeparator())
+                                .append("0 : add item").append(System.lineSeparator())
+                                .append("1 : show all items").append(System.lineSeparator())
+                                .append("2 : edit item").append(System.lineSeparator())
+                                .append("3 : delete item").append(System.lineSeparator())
+                                .append("4 : find item by id").append(System.lineSeparator())
+                                .append("5 : find items by name").append(System.lineSeparator())
+                                .append("6 : exit program").append(System.lineSeparator())
                                 .append("№" + item.getId() + "     new item")
                                 .append(System.lineSeparator())
-                                .append("0 : Add Item").append(System.lineSeparator())
-                                .append("1 : Show all items").append(System.lineSeparator())
-                                .append("2 : Edit item").append(System.lineSeparator())
-                                .append("3 : Delete item").append(System.lineSeparator())
-                                .append("4 : Find item by Id").append(System.lineSeparator())
-                                .append("5 : Find items by name").append(System.lineSeparator())
-                                .append("6 : Exit Program").append(System.lineSeparator())
+                                .append("0 : add item").append(System.lineSeparator())
+                                .append("1 : show all items").append(System.lineSeparator())
+                                .append("2 : edit item").append(System.lineSeparator())
+                                .append("3 : delete item").append(System.lineSeparator())
+                                .append("4 : find item by id").append(System.lineSeparator())
+                                .append("5 : find items by name").append(System.lineSeparator())
+                                .append("6 : exit program").append(System.lineSeparator())
                                 .toString()
                 )
         );

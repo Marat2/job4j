@@ -1,14 +1,17 @@
 package ru.job4j.tracker;
 
-public class FindItemsByName extends BaseAction   {
+import java.util.function.Consumer;
 
-    public FindItemsByName(int key, String name) {
+public class FindItemsByName extends BaseAction   {
+    private final Consumer<String> output;
+    public FindItemsByName(int key, String name, Consumer<String> output) {
         super(key, name);
+        this.output = output;
     }
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        System.out.print("Enter item name: ");
+        output.accept(String.format("Enter item name: "));
         String showname = input.askStr("");
         tracker.findByName(showname);
     }

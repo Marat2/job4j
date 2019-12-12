@@ -1,14 +1,17 @@
 package ru.job4j.tracker;
 
-public class DeleteItem extends BaseAction {
+import java.util.function.Consumer;
 
-    public DeleteItem(int key, String name) {
+public class DeleteItem extends BaseAction {
+    private final Consumer<String> output;
+    public DeleteItem(int key, String name, Consumer<String> output) {
         super(key, name);
+        this.output = output;
     }
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        System.out.print("Enter item id: ");
+        output.accept(String.format("Enter item id: "));
         String deleteid = input.askStr("");
         tracker.delete(deleteid);
     }

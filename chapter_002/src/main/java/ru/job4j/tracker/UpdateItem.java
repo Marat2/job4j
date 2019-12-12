@@ -1,17 +1,21 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 public class UpdateItem  extends BaseAction  {
-    public UpdateItem(int key, String name) {
+    private final Consumer<String> output;
+    public UpdateItem(int key, String name, Consumer<String> output) {
         super(key, name);
+        this.output = output;
     }
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        System.out.print("Enter item id: ");
+        output.accept(String.format("Enter item id: "));
         String id = input.askStr("");
-        System.out.print("Enter new name: ");
+        output.accept(String.format("Enter new name: "));
         String newname = input.askStr("");
-        System.out.print("Enter new description: ");
+        output.accept(String.format("Enter new description: "));
         String newdesc = input.askStr("");
         Item newitem = new Item(newname, newdesc);
         tracker.replace(id, newitem);
