@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -35,13 +36,19 @@ public class SchoolTest {
         List<Student> expected = students.stream().filter(student->student.score >= 0 && student.score <= 50).collect(Collectors.toList());
         assertThat(expected, is(school.collect(students, classC)));
     }
+    @Test
+    public void stMap() {
+        List<Student> students = this.setStudents();
+        School school = new School();
+        assertTrue("{A=Student{score=75, name='A'}, B=Student{score=85, name='B'}, C=Student{score=51, name='C'}, D=Student{score=25, name='D'}, E=Student{score=35, name='E'}}".equals(school.studentlist(students).toString()));
+    }
     private List<Student> setStudents() {
         List<Student> students = new ArrayList<Student>();
-        students.add(new Student(75));
-        students.add(new Student(85));
-        students.add(new Student(51));
-        students.add(new Student(25));
-        students.add(new Student(35));
+        students.add(new Student(75, "A"));
+        students.add(new Student(85, "B"));
+        students.add(new Student(51, "C"));
+        students.add(new Student(25, "D"));
+        students.add(new Student(35, "E"));
         return students;
     }
 }
