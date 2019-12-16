@@ -2,7 +2,7 @@ package ru.job4j.profiles;
 
 import java.util.Objects;
 
-public class Address  implements Comparable<Address>{
+public class Address  implements Comparable<Address> {
 
     private String city;
     private String street;

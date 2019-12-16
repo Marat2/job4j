@@ -15,21 +15,14 @@ public class ProfileTest {
     public void getAddressList() {
         Profiles profiles = new Profiles();
         this.createProfiles();
-       /* List<Address> expected = this.addresses.sort(new Comparator<Address>() {
+        this.addresses.sort(new Comparator<Address>() {
             @Override
             public int compare(Address o1, Address o2) {
                 return o1.compareTo(o2);
             }
-        });*/
-        List<Address> expected = new ArrayList<Address>();
-        expected.add(new Address("City1", "street1", 1, 1));
-        expected.add(new Address("НCity2", "street2", 2, 2));
-        expected.add(new Address("ACity1", "street1", 1, 1));
-        expected.add(new Address("BCity1", "street1", 1, 1));
-        expected.add(new Address("BCity1", "street1", 1, 1));
-        //expected.stream().distinct().sorted().collect(Collectors.toList());
-
-        assertThat(expected.stream().distinct().sorted().collect(Collectors.toList()), is(profiles.collect(this.profiles)));
+        });
+        List<Address> expected = this.addresses.stream().distinct().collect(Collectors.toList());
+        assertThat(expected, is(profiles.collect(this.profiles)));
     }
     public void createProfiles() {
         Address add1 = new Address("City1", "street1", 1, 1);
