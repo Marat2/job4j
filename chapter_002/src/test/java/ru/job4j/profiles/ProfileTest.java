@@ -15,13 +15,7 @@ public class ProfileTest {
     public void getAddressList() {
         Profiles profiles = new Profiles();
         this.createProfiles();
-        this.addresses.sort(new Comparator<Address>() {
-            @Override
-            public int compare(Address o1, Address o2) {
-                return o1.compareTo(o2);
-            }
-        });
-        List<Address> expected = this.addresses.stream().distinct().collect(Collectors.toList());
+        List<Address> expected = profiles.getAddresList(this.addresses);
         assertThat(expected, is(profiles.collect(this.profiles)));
     }
     public void createProfiles() {
@@ -54,5 +48,11 @@ public class ProfileTest {
         this.profiles.add(prof3);
         this.profiles.add(prof4);
         this.profiles.add(prof5);
+        this.addresses.sort(new Comparator<Address>() {
+            @Override
+            public int compare(Address o1, Address o2) {
+                return o1.compareTo(o2);
+            }
+        });
     }
 }
