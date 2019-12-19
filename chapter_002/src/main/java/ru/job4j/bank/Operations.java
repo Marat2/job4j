@@ -1,19 +1,14 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Operations {
-    private Map<User, List<Account>> accounts = new  HashMap<User, List<Account>>();
-
-    public Map<User, List<Account>> getAccounts() {
-        return this.accounts;
-    }
+    Set<User> accounts = new HashSet <User>();
+    public Set<User> getAccounts() {  return this.accounts;   }
 
     public void addUser(User user) {
-        this.accounts.putIfAbsent(user, new ArrayList<Account>());
+        this.accounts.add(user);
     }
 
     public void deleteUser(User user) {
@@ -21,14 +16,16 @@ public class Operations {
     }
 
     public void addAccountToUser(String passport, Account account) {
-        this.getAccounts(passport).add(account);
+        getUserAccounts(passport).add(account);
     }
     public void deleteAccountFromUser(String passport, Account account) {
-        this.getAccounts(passport).remove(account);
+        getUserAccounts(passport).remove(account);
     }
 
     public List<Account> getUserAccounts(String passport) {
-        return this.getAccounts(passport);
+        return this.accounts.stream().filter(
+                                                u->u.getPassport().equals(passport)
+                                            ).collect(Collectors.toList()).get(0).getAccounts();
     }
     public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
         boolean result = false;
@@ -46,24 +43,8 @@ public class Operations {
         return result;
     }
     private Account getAccount(String passport, String requisite) {
-        List<Account> userAccounts = this.getUserAccounts(passport);
-        Account userAccount = null;
-        for (Account account:userAccounts) {
-            if (account.getRequisites().equals(requisite)) {
-                userAccount = account;
-                break;
-            }
-        }
-        return userAccount;
-    }
-    public List<Account> getAccounts(String passport) {
-        List<Account> accounts = new ArrayList<Account>();
-        for (Map.Entry<User, List<Account>> acc:this.accounts.entrySet()) {
-            if (acc.getKey().getPassport().equals(passport)) {
-                accounts = acc.getValue();
-                break;
-            }
-        }
-        return accounts;
+        return getUserAccounts(passport).stream().filter(
+                a->a.getRequisites().equals(requisite)
+        ).collect(Collectors.toList()).get(0);
     }
 }

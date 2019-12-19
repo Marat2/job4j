@@ -1,12 +1,14 @@
 package ru.job4j.bank;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class User implements Comparable<User>  {
 
     private String name;
     private String passport;
-
+    private List<Account> accounts = new ArrayList<Account>();
     public User(String passport, String name) {
         this.passport = passport;
         this.name = name;
@@ -63,5 +65,13 @@ public class User implements Comparable<User>  {
     @Override
     public int hashCode() {
         return Objects.hash(name, passport);
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
 }

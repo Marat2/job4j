@@ -13,6 +13,7 @@ public class OperationsTest {
     public void addUserTest() {
         User testUser = new User("22788339", "Ivan");
         User testUser1 = new User("3345674", "Petr");
+        User testUser3 = new User("22788339", "Ivan");
         Operations testAction = new Operations();
         testAction.addUser(testUser);
         testAction.addUser(testUser1);
