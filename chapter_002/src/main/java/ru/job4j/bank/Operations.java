@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Operations {
     private Map<User, List<Account>> accounts = new  HashMap<User, List<Account>>();
@@ -48,22 +50,13 @@ public class Operations {
     private Account getAccount(String passport, String requisite) {
         List<Account> userAccounts = this.getUserAccounts(passport);
         Account userAccount = null;
-        for (Account account:userAccounts) {
-            if (account.getRequisites().equals(requisite)) {
-                userAccount = account;
-                break;
-            }
-        }
+        userAccount=userAccounts.stream().filter(e->requisite.equals(e.getRequisites())).findFirst().get();
         return userAccount;
     }
     public List<Account> getAccounts(String passport) {
-        List<Account> accounts = new ArrayList<Account>();
-        for (Map.Entry<User, List<Account>> acc:this.accounts.entrySet()) {
-            if (acc.getKey().getPassport().equals(passport)) {
-                accounts = acc.getValue();
-                break;
-            }
-        }
+        List<Account> accounts =this.accounts.entrySet().stream().filter(
+                e->passport.equals(e.getKey().getPassport())
+        ).map(Map.Entry::getValue).findFirst().get();
         return accounts;
     }
 }
