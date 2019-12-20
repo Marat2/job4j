@@ -1,6 +1,6 @@
 package ru.job4j.separator;
 
-public class Student {
+public class Student implements Comparable<Student> {
     public int score;
     private String name;
     public Student(int score, String name) {
@@ -28,5 +28,10 @@ public class Student {
                 + '\''
                 +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return o.score-this.score;
     }
 }

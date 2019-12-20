@@ -42,6 +42,11 @@ public class SchoolTest {
         School school = new School();
         assertTrue("{A=Student{score=75, name='A'}, B=Student{score=85, name='B'}, C=Student{score=51, name='C'}, D=Student{score=25, name='D'}, E=Student{score=35, name='E'}}".equals(school.studentlist(students).toString()));
     }
+    @Test
+    public void takeWhileTest(){
+        School school = new School();
+        System.out.println(school.levelOf(this.setStudents(),70));
+    }
     private List<Student> setStudents() {
         List<Student> students = new ArrayList<Student>();
         students.add(new Student(75, "A"));
@@ -49,6 +54,7 @@ public class SchoolTest {
         students.add(new Student(51, "C"));
         students.add(new Student(25, "D"));
         students.add(new Student(35, "E"));
+        students.add(null);
         return students;
     }
 }
