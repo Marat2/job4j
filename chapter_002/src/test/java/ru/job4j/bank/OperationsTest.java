@@ -58,11 +58,12 @@ public class OperationsTest {
         User testUser = new User("22788339", "Ivan");
         Account firstUserAccount = new Account("mh88945", 10.0);
         Account secondUserAccount = new Account("mh788945", 0);
+        Account asUserAccount = new Account("mh7883945", 0);
         Operations testAction = new Operations();
         testAction.addUser(testUser);
         testAction.addAccountToUser(testUser.getPassport(), firstUserAccount);
         testAction.addAccountToUser(testUser.getPassport(), secondUserAccount);
-        testAction.transferMoney(testUser.getPassport(), firstUserAccount.getRequisites(), testUser.getPassport(), secondUserAccount.getRequisites(), 6.0);
+        testAction.transferMoney(testUser.getPassport(), firstUserAccount.getRequisites(), testUser.getPassport(), asUserAccount.getRequisites(), 6.0);
         List<Account> accounts = testAction.getUserAccounts(testUser.getPassport());
         assertThat(accounts.get(accounts.indexOf(firstUserAccount)).getValue(), is(4.0));
     }
