@@ -3,6 +3,7 @@ package ru.job4j.search;
 import org.junit.Test;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -24,10 +25,7 @@ public class PriorityQueueTest {
         Task first = new Task("urgent", 1);
         Task second = new Task("middle", 3);
         Task third = new Task("low", 5);
-        LinkedList<Task> expected = new LinkedList<>();
-        expected.add(first);
-        expected.add(second);
-        expected.add(third);
+        List<Task> expected = List.of(first,second,third);
 
         queue.put(third);
         queue.put(first);

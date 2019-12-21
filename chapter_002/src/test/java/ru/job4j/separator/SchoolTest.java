@@ -45,16 +45,11 @@ public class SchoolTest {
     @Test
     public void takeWhileTest(){
         School school = new School();
-        System.out.println(school.levelOf(this.setStudents(),70));
+        List<Student> expected = List.of(new Student(85, "B"),new Student(75, "A"));
+        assertThat(expected.toString(),is(school.levelOf(this.setStudents(),70).toString()));
     }
     private List<Student> setStudents() {
-        List<Student> students = new ArrayList<Student>();
-        students.add(new Student(75, "A"));
-        students.add(new Student(85, "B"));
-        students.add(new Student(51, "C"));
-        students.add(new Student(25, "D"));
-        students.add(new Student(35, "E"));
-        students.add(null);
+        List<Student> students = List.of(new Student(75, "A"),new Student(85, "B"),new Student(51, "C"),new Student(25, "D"),new Student(35, "E"));
         return students;
     }
 }
