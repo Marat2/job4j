@@ -17,6 +17,7 @@ public class PhoneDictionary {
      */
     public List<Person> find(String key) {
         List<Person> result = new ArrayList<>();
+
         Iterator<Person> itr = persons.iterator();
         while (itr.hasNext()) {
             Person cur = itr.next();
