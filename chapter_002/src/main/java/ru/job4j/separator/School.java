@@ -16,10 +16,10 @@ public class School {
         Map<String, Student> stlist = students.stream().collect(Collectors.toMap(Student::getName, e->e));
         return stlist;
     }
-    List<Student> levelOf(List<Student> students, int bound){
-        List<Student> s =students.stream().flatMap(Stream::ofNullable).collect(Collectors.toList());
+    List<Student> levelOf(List<Student> students, int bound) {
+        List<Student> s = students.stream().flatMap(Stream::ofNullable).collect(Collectors.toList());
         Collections.sort(s);
-        List<Student> result =s.stream().takeWhile(v->v.score>bound).collect(Collectors.toList());
+        List<Student> result = s.stream().takeWhile(v->v.score > bound).collect(Collectors.toList());
         return result;
     }
 }

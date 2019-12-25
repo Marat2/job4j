@@ -15,7 +15,7 @@ public class ProfileTest {
     public void getAddressList() {
         Profiles profiles = new Profiles();
         this.createProfiles();
-        List<Address> expected =List.of(new Address("ACity1", "street1", 1, 1),new Address("BCity1", "street1", 1, 1),new Address("City1", "street1", 1, 1),new Address("НCity2", "street2", 2, 2));
+        List<Address> expected = List.of(new Address("ACity1", "street1", 1, 1), new Address("BCity1", "street1", 1, 1), new Address("City1", "street1", 1, 1), new Address("НCity2", "street2", 2, 2));
         assertThat(expected, is(profiles.collect(this.profiles)));
     }
     public void createProfiles() {

@@ -25,7 +25,7 @@ public class PriorityQueueTest {
         Task first = new Task("urgent", 1);
         Task second = new Task("middle", 3);
         Task third = new Task("low", 5);
-        List<Task> expected = List.of(first,second,third);
+        List<Task> expected = List.of(first, second, third);
 
         queue.put(third);
         queue.put(first);

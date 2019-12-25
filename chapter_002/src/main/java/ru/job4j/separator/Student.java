@@ -32,6 +32,6 @@ public class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student o) {
-        return o.score-this.score;
+        return o.score - this.score;
     }
 }

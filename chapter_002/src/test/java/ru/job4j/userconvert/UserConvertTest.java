@@ -12,7 +12,7 @@ import static org.hamcrest.core.Is.is;
 public class UserConvertTest {
     @Test
     public void userConvertTest() {
-        List<User> user = List.of(new User(1, "Marat", "Tashkent"),new User(2, "Sergei",  "Kaliningrad"),new User(3, "Gurbanguli Berdi Muhamedov", "Ashhabad"));
+        List<User> user = List.of(new User(1, "Marat", "Tashkent"), new User(2, "Sergei",  "Kaliningrad"), new User(3, "Gurbanguli Berdi Muhamedov", "Ashhabad"));
         User one = new User(1, "Marat", "Tashkent");
         UserConvert map = new UserConvert();
         HashMap<Integer, User> userMap = map.process(user);

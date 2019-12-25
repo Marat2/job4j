@@ -24,7 +24,7 @@ public class PhoneDictionaryTest {
         phones.add(one);
         phones.add(two);
         phones.add(new Person("Vasya", "Dmitriev", "23222", "Хабаровск"));
-        List<Person> expected =  List.of(one,two);
+        List<Person> expected = List.of(one, two);
         List<Person> actual = phones.find("Petr");
         assertThat(expected, is(actual));
     }

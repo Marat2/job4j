@@ -43,13 +43,13 @@ public class SchoolTest {
         assertTrue("{A=Student{score=75, name='A'}, B=Student{score=85, name='B'}, C=Student{score=51, name='C'}, D=Student{score=25, name='D'}, E=Student{score=35, name='E'}}".equals(school.studentlist(students).toString()));
     }
     @Test
-    public void takeWhileTest(){
+    public void takeWhileTest() {
         School school = new School();
-        List<Student> expected = List.of(new Student(85, "B"),new Student(75, "A"));
-        assertThat(expected.toString(),is(school.levelOf(this.setStudents(),70).toString()));
+        List<Student> expected = List.of(new Student(85, "B"), new Student(75, "A"));
+        assertThat(expected.toString(), is(school.levelOf(this.setStudents(), 70).toString()));
     }
     private List<Student> setStudents() {
-        List<Student> students = List.of(new Student(75, "A"),new Student(85, "B"),new Student(51, "C"),new Student(25, "D"),new Student(35, "E"));
+        List<Student> students = List.of(new Student(75, "A"), new Student(85, "B"), new Student(51, "C"), new Student(25, "D"), new Student(35, "E"));
         return students;
     }
 }

@@ -50,13 +50,13 @@ public class Operations {
     private Account getAccount(String passport, String requisite) {
         List<Account> userAccounts = this.getUserAccounts(passport);
         Account userAccount = null;
-        userAccount=userAccounts.stream().filter(e->requisite.equals(e.getRequisites())).findFirst().orElse(new Account("fake",0));
+        userAccount = userAccounts.stream().filter(e->requisite.equals(e.getRequisites())).findFirst().orElse(new Account("fake", 0));
         return userAccount;
     }
     public List<Account> getAccounts(String passport) {
-        List<Account> accounts =this.accounts.entrySet().stream().filter(
+        List<Account> accounts = this.accounts.entrySet().stream().filter(
                 e->passport.equals(e.getKey().getPassport())
-        ).map(Map.Entry::getValue).findFirst().orElse(List.of(new Account("fake",0)));
+        ).map(Map.Entry::getValue).findFirst().orElse(List.of(new Account("fake", 0)));
         return accounts;
     }
 }

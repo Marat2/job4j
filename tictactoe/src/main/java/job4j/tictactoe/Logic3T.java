@@ -16,65 +16,26 @@ public class Logic3T {
         this.table = table;
     }
 //проверяет есть ли в поле выигрышные комбинации для Крестика
-//Stream<Figure3T[]> stream1 = Arrays.stream(this.table);
-//stream1.forEach(x -> Arrays.stream(x).forEach(y->System.out.println(y.toString())));
     public boolean isWinnerX() {
-        List<Boolean> x = new ArrayList<Boolean>();
-        boolean result = true;
-        /*Arrays.stream(this.table).forEach(e -> Arrays.stream(e).forEach(y->{x.add(y.hasMarkX());}));
-        IntStream.range(0, x.size()).
-                .collect(Collectors.toList());
-        System.out.println(x.toString());*/
-        //stream1.forEach(x -> Arrays.stream(x).forEach(y->y.hasMarkX()));
-        for (int i=0;i<this.table.length;i++) {
-            for (int j=0;j<this.table[i].length;j++) {
-                    result=result&this.table[i][j].hasMarkX();
-            }
-        }
-        if (!result){
-            result=true;
-            for (int i=0;i<this.table.length;i++) {
-                result=result&this.table[i][0].hasMarkX();
-            }
-        }
-        if (!result){
-            result=true;
-            for (int i=0;i<this.table.length;i++) {
-                result=result&this.table[i][i].hasMarkX();
-            }
-        }
-        if (!result){
-            result=true;
-            for (int i=0;i<this.table.length;i++) {
-                result=result&this.table[i][3-i].hasMarkX();
-            }
-        }
-        return result;
+        return this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 0) || this.fillBy(Figure3T::hasMarkX, 0, 1, 1, 0) || fillBy(Figure3T::hasMarkX, 0, 2, 1, 0) ||//строки
+                 this.fillBy(Figure3T::hasMarkX, 0, 0, 0, 1) || this.fillBy(Figure3T::hasMarkX, 1, 0, 0, 1) || fillBy(Figure3T::hasMarkX, 2, 0, 0, 1) ||//столбцы
+                 this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 1) || this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, -1, 1);
     }
 //проверяет есть ли в поле выигрышные комбинации для Нолика
     public boolean isWinnerO() {
+        return this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0) || this.fillBy(Figure3T::hasMarkO, 0, 1, 1, 0) || fillBy(Figure3T::hasMarkO, 0, 2, 1, 0) ||
+                this.fillBy(Figure3T::hasMarkO, 0, 0, 0, 1) || this.fillBy(Figure3T::hasMarkO, 1, 0, 0, 1) || fillBy(Figure3T::hasMarkO, 2, 0, 0, 1) ||
+                this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 1) || this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, -1, 1);
+    }
+    public boolean fillBy(Predicate<Figure3T> pred, int startX, int startY, int deltaX, int deltaY){
         boolean result = true;
-        for (int i=0;i<this.table.length;i++) {
-            for (int j=0;j<this.table[i].length;j++) {
-                result=result&this.table[i][j].hasMarkO();
-            }
-        }
-        if (!result){
-            result=true;
-            for (int i=0;i<this.table.length;i++) {
-                result=result&this.table[i][0].hasMarkO();
-            }
-        }
-        if (!result){
-            result=true;
-            for (int i=0;i<this.table.length;i++) {
-                result=result&this.table[i][i].hasMarkO();
-            }
-        }
-        if (!result){
-            result=true;
-            for (int i=0;i<this.table.length;i++) {
-                result=result&this.table[i][3-i].hasMarkO();
+        for (int i=0;i!=this.table.length;i++){
+            Figure3T cell = table[startX][startY];
+            startX+=deltaX;
+            startY+=deltaY;
+            if (!pred.test(cell)){
+                result = false;
+                break;
             }
         }
         return result;
