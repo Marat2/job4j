@@ -42,6 +42,18 @@ public class Logic3T {
     }
 //проверяет, если ли пустые клетки для новых ходов
     public boolean hasGap() {
-        return true;
+        return checkFree();
+    }
+    public boolean checkFree() {
+        boolean result=true;
+        for (int i = 0; i != this.table.length; i++){
+            if((this.table[i][0].hasMarkX() || this.table[i][0].hasMarkO()) && (this.table[i][1].hasMarkX() || this.table[i][1].hasMarkO()) && (this.table[i][2].hasMarkX() || this.table[i][2].hasMarkO())){
+                result=false;
+            }else{
+                result=true;
+                break;
+            }
+        }
+        return result;
     }
 }
