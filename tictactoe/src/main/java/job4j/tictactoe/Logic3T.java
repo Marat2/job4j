@@ -17,23 +17,24 @@ public class Logic3T {
     }
 //проверяет есть ли в поле выигрышные комбинации для Крестика
     public boolean isWinnerX() {
-        return this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 0) || this.fillBy(Figure3T::hasMarkX, 0, 1, 1, 0) || fillBy(Figure3T::hasMarkX, 0, 2, 1, 0) ||//строки
-                 this.fillBy(Figure3T::hasMarkX, 0, 0, 0, 1) || this.fillBy(Figure3T::hasMarkX, 1, 0, 0, 1) || fillBy(Figure3T::hasMarkX, 2, 0, 0, 1) ||//столбцы
-                 this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 1) || this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, -1, 1);
+        return isWin(Figure3T::hasMarkX);
     }
 //проверяет есть ли в поле выигрышные комбинации для Нолика
     public boolean isWinnerO() {
-        return this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0) || this.fillBy(Figure3T::hasMarkO, 0, 1, 1, 0) || fillBy(Figure3T::hasMarkO, 0, 2, 1, 0) ||
-                this.fillBy(Figure3T::hasMarkO, 0, 0, 0, 1) || this.fillBy(Figure3T::hasMarkO, 1, 0, 0, 1) || fillBy(Figure3T::hasMarkO, 2, 0, 0, 1) ||
-                this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 1) || this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, -1, 1);
+        return isWin(Figure3T::hasMarkO);
+    }
+    public boolean isWin(Predicate<Figure3T> pred){
+        return this.fillBy(pred, 0, 0, 1, 0) || this.fillBy(pred, 0, 1, 1, 0) || fillBy(pred, 0, 2, 1, 0) ||
+                this.fillBy(pred, 0, 0, 0, 1) || this.fillBy(pred, 1, 0, 0, 1) || fillBy(pred, 2, 0, 0, 1) ||
+                this.fillBy(pred, 0, 0, 1, 1) || this.fillBy(pred, this.table.length - 1, 0, -1, 1);
     }
     public boolean fillBy(Predicate<Figure3T> pred, int startX, int startY, int deltaX, int deltaY){
         boolean result = true;
-        for (int i=0;i!=this.table.length;i++){
+        for (int i=0;i!=this.table.length;i++) {
             Figure3T cell = table[startX][startY];
             startX+=deltaX;
             startY+=deltaY;
-            if (!pred.test(cell)){
+            if (!pred.test(cell)) {
                 result = false;
                 break;
             }
@@ -42,18 +43,6 @@ public class Logic3T {
     }
 //проверяет, если ли пустые клетки для новых ходов
     public boolean hasGap() {
-        return checkFree();
-    }
-    public boolean checkFree() {
-        boolean result=true;
-        for (int i = 0; i != this.table.length; i++){
-            if((this.table[i][0].hasMarkX() || this.table[i][0].hasMarkO()) && (this.table[i][1].hasMarkX() || this.table[i][1].hasMarkO()) && (this.table[i][2].hasMarkX() || this.table[i][2].hasMarkO())){
-                result=false;
-            }else{
-                result=true;
-                break;
-            }
-        }
-        return result;
+        return Arrays.stream(this.table).flatMap(t-> Arrays.stream(t)).anyMatch(e->(!e.hasMarkO() && !e.hasMarkX()));
     }
 }
