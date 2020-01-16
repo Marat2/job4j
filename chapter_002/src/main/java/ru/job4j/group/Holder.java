@@ -9,6 +9,6 @@ public class Holder {
     }
     @Override
     public String toString() {
-        return "key="+this.key+" val="+this.value;
+        return "key=" + this.key + " val=" + this.value;
     }
 }
