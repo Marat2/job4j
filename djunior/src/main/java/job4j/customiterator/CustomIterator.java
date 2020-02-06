@@ -1,29 +1,34 @@
 package job4j.customiterator;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class CustomIterator implements Iterator {
-    private final int [][] values;
+    private final int [][] value;
 
-    private int index=0;
-    private int inner=0;
+    int index = 0;
+    int inner = 0;
 
-    public CustomIterator(int[][] values) {
-        this.values = values;
+    public CustomIterator(int[][] value) {
+        this.value = value;
     }
 
     @Override
     public boolean hasNext() {
-        return values[index].length>inner;
+        return (index < value.length && inner < value[index].length);
     }
 
     @Override
     public Object next() {
-        if(hasNext()) {
-            return values[index][inner++];
-        }else {
-            inner=0;
-            return values[++index][inner++];
+        if (!hasNext()) {
+            throw new NoSuchElementException();
         }
+
+        int i = value[index][inner++];
+        if (inner == value[index].length) {
+            inner = 0;
+            index++;
+        }
+        return i;
     }
 }

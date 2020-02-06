@@ -1,6 +1,8 @@
 package job4j.customiterator;
 
 import job4j.customiterator.CustomCollection;
+import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -8,18 +10,41 @@ import java.util.Iterator;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 public class CustomCollectionTest {
+    private Iterator<Integer> it;
+
+    @Before
+    public void setUp(){
+        it = new CustomIterator(new int[][]{{1}, {3, 4}, {7}});
+    }
+
     @Test
-    public void addUserTest() {
-        int[][] value = {
-                {1, 2,5},
-                {3, 4}
-        };
-        CustomCollection test = new CustomCollection(value);
-        Iterator iterator = test.iterator();
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
+    public void testsThatNextMethodDoesntDependsOnPriorHasNextInvocation () {
+        assertThat(it.next(), Matchers.is(1));
+        assertThat(it.next(), Matchers.is(3));
+        assertThat(it.next(), Matchers.is(4));
+        assertThat(it.next(), Matchers.is(7));
+    }
+
+    @Test
+    public void sequentialHasNextInvocationDoesntAffectRetrievalOrder () {
+        assertThat(it.hasNext(), Matchers.is(true));
+        assertThat(it.hasNext(), Matchers.is(true));
+        assertThat(it.next(), Matchers.is(1));
+        assertThat(it.next(), Matchers.is(3));
+        assertThat(it.next(), Matchers.is(4));
+        assertThat(it.next(), Matchers.is(7));
+    }
+
+    @Test
+    public void hasNextNextSequentialInvocation () {
+        assertThat(it.hasNext(), Matchers.is(true));
+        assertThat(it.next(), Matchers.is(1));
+        assertThat(it.hasNext(),Matchers.is(true));
+        assertThat(it.next(), Matchers.is(3));
+        assertThat(it.hasNext(), Matchers.is(true));
+        assertThat(it.next(), Matchers.is(4));
+        assertThat(it.hasNext(), Matchers.is(true));
+        assertThat(it.next(), Matchers.is(7));
+        assertThat(it.hasNext(), Matchers.is(false));
     }
 }
