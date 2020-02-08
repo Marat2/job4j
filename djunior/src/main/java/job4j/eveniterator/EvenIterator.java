@@ -15,7 +15,7 @@ public class EvenIterator implements Iterator {
     @Override
     public boolean hasNext() {
         //если нет четных элементов то он должен вернуть false(не трогать)
-        return incoming_args.length-1>index;
+        return (incoming_args.length>index && incoming_args.length>1);
     }
 //проверяет можно ли идти дальше , возвращает текущий эдемент(если он четный) и передвигает каретку
     @Override
