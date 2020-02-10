@@ -6,8 +6,8 @@ import java.util.NoSuchElementException;
 public class CustomIterator implements Iterator {
     private final int [][] value;
 
-    int index = 0;
-    int inner = 0;
+    private int index = 0;
+    private int inner = 0;
 
     public CustomIterator(int[][] value) {
         this.value = value;
