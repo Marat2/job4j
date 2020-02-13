@@ -34,8 +34,7 @@ public class Converter {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                Integer i = inner.next();
-                return i;
+                return inner.next();
             }
         };
     }
