@@ -5,25 +5,25 @@ import java.util.NoSuchElementException;
 
 public class EvenIterator implements Iterator {
 
-    public final int[] incoming_args;
+    public final int[] incomingArgs;
     private int index=0;
 
-    public EvenIterator(int[] incoming_args) {
-        this.incoming_args = incoming_args;
+    public EvenIterator(int[] incomingArgs) {
+        this.incomingArgs = incomingArgs;
     }
     @Override
     public boolean hasNext() {
         boolean result = false;
-        if (incoming_args.length<=index || incoming_args.length==1) {
+        if (incomingArgs.length<=index || incomingArgs.length==1) {
             result = false;
         }else {
-            while (incoming_args.length<=this.index || incoming_args[this.index]%2!=0) {
-                this.index++;
-                if(this.index>incoming_args.length){
+            while (incomingArgs.length<=index || incomingArgs[index]%2!=0) {
+                index++;
+                if(index>incomingArgs.length){
                     throw new NoSuchElementException();
                 }
             }
-            if (this.index>=incoming_args.length) {
+            if (index>=incomingArgs.length) {
                 result = false;
             } else {
                 result = true;
@@ -37,8 +37,7 @@ public class EvenIterator implements Iterator {
         if(!hasNext()){
             throw new NoSuchElementException();
         }
-        int i = incoming_args[index];
-        index++;
+        int i = incomingArgs[index++];
         return  i;
     }
 }
