@@ -13,22 +13,16 @@ public class EvenIterator implements Iterator {
     }
     @Override
     public boolean hasNext() {
-        boolean result = false;
-        if (incomingArgs.length<=index || incomingArgs.length==1) {
-            result = false;
-        }else {
-            while (incomingArgs.length<=index || incomingArgs[index]%2!=0) {
+        boolean result=false;
+        for (int i = index; i <= incomingArgs.length-1; i++) {
+            if(index>incomingArgs.length){
+                throw new NoSuchElementException();
+            }else if (incomingArgs[index]%2!=0){
                 index++;
-                if(index>incomingArgs.length){
-                    throw new NoSuchElementException();
-                }
-            }
-            if (index>=incomingArgs.length) {
-                result = false;
-            } else {
+            }else{
                 result = true;
+                break;
             }
-            result = true;
         }
         return result;
     }
