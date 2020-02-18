@@ -8,24 +8,26 @@ public class Converter {
 
     Iterator<Integer> convert(Iterator<Iterator<Integer>> it) {
         return new Iterator<Integer>() {
-            private Iterator<Integer> inner = it.next();
+            private Iterator<Integer> inner;
+            int value;
             @Override
             public boolean hasNext() {
-                boolean result = false;
-                if (inner.hasNext()){
+                boolean result = true;
+                if(inner == null){
+                    inner = it.next();
                     result = true;
-                }else {
-                    if (it.hasNext()){
-                        inner=it.next();
+                }
+                if(!inner.hasNext() && !it.hasNext()){
+                    result = false;
+                }
+                while(!inner.hasNext() && it.hasNext()){
+                    result = false;
+                    inner = it.next();
+                    if (inner.hasNext()){
                         result = true;
-                        while (!inner.hasNext() && it.hasNext()){
-                            it.next();
-                            result = false;
-                        }
-                    }else {
-                        result=false;
                     }
                 }
+
                 return result;
             }
 
@@ -34,6 +36,7 @@ public class Converter {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
+                //System.out.println("-------"+inner.next());
                 return inner.next();
             }
         };
