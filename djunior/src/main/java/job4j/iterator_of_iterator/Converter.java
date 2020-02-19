@@ -9,26 +9,19 @@ public class Converter {
     Iterator<Integer> convert(Iterator<Iterator<Integer>> it) {
         return new Iterator<Integer>() {
             private Iterator<Integer> inner;
-            int value;
-            @Override
-            public boolean hasNext() {
-                boolean result = true;
-                if(inner == null){
-                    inner = it.next();
-                    result = true;
-                }
-                if(!inner.hasNext() && !it.hasNext()){
-                    result = false;
-                }
-                while(!inner.hasNext() && it.hasNext()){
-                    result = false;
-                    inner = it.next();
-                    if (inner.hasNext()){
-                        result = true;
+            private void CurrentIterator() {
+                while (it.hasNext()) {
+                    if (inner == null || !inner.hasNext()) {
+                        inner = it.next();
+                    } else {
+                        break;
                     }
                 }
-
-                return result;
+            }
+            @Override
+            public boolean hasNext() {
+                CurrentIterator();
+                return inner.hasNext();
             }
 
             @Override
