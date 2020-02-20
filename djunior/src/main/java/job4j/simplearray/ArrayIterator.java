@@ -3,7 +3,7 @@ package job4j.simplearray;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ArrayIterator<T> implements Iterator {
+public class ArrayIterator<T> implements Iterator<T> {
 
     private final SimpleArray<T> values;
     private int index = 0;
@@ -18,10 +18,10 @@ public class ArrayIterator<T> implements Iterator {
     }
 
     @Override
-    public Object next() {
+    public T next() {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        return values.result[index++];
+        return (T)values.result[index++];
     }
 }
