@@ -11,15 +11,21 @@ public class EvenIterator implements Iterator {
     public EvenIterator(int[] incomingArgs) {
         this.incomingArgs = incomingArgs;
     }
+
+    private boolean validate(int number){
+        boolean result = true;
+        if (number%2!=0){
+            index++;
+            result = false;
+        }
+        return result;
+    }
+
     @Override
     public boolean hasNext() {
         boolean result=false;
         for (int i = index; i <= incomingArgs.length-1; i++) {
-            if(index>incomingArgs.length){
-                throw new NoSuchElementException();
-            }else if (incomingArgs[index]%2!=0){
-                index++;
-            }else{
+            if(validate(incomingArgs[index])){
                 result = true;
                 break;
             }
@@ -31,7 +37,6 @@ public class EvenIterator implements Iterator {
         if(!hasNext()){
             throw new NoSuchElementException();
         }
-        int i = incomingArgs[index++];
-        return  i;
+        return  incomingArgs[index++];
     }
 }
