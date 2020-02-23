@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 
 public class GroupTest {
     @Test
-    public void TestGroup() {
+    public void testGroup() {
         List<Student> students = List.of(new Student("A", Set.of("first", "second", "third")),
                                          new Student("B", Set.of("third")),
                                          new Student("C", Set.of("first", "third")),

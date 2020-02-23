@@ -1,4 +1,4 @@
-package job4j.eveniterator;
+package job4j.even;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -6,15 +6,15 @@ import java.util.NoSuchElementException;
 public class EvenIterator implements Iterator {
 
     public final int[] incomingArgs;
-    private int index=0;
+    private int index = 0;
 
     public EvenIterator(int[] incomingArgs) {
         this.incomingArgs = incomingArgs;
     }
 
-    private boolean validate(int number){
+    private boolean validate(int number) {
         boolean result = true;
-        if (number%2!=0){
+        if (number % 2 != 0) {
             index++;
             result = false;
         }
@@ -23,9 +23,9 @@ public class EvenIterator implements Iterator {
 
     @Override
     public boolean hasNext() {
-        boolean result=false;
-        for (int i = index; i <= incomingArgs.length-1; i++) {
-            if(validate(incomingArgs[index])){
+        boolean result = false;
+        for (int i = index; i <= incomingArgs.length - 1; i++) {
+            if (validate(incomingArgs[index])) {
                 result = true;
                 break;
             }
@@ -34,7 +34,7 @@ public class EvenIterator implements Iterator {
     }
     @Override
     public Object next() {
-        if(!hasNext()){
+        if (!hasNext()) {
             throw new NoSuchElementException();
         }
         return  incomingArgs[index++];

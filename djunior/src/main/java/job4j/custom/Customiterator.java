@@ -1,15 +1,14 @@
-package job4j.customiterator;
-
+package job4j.custom;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class CustomIterator implements Iterator {
-    private final int [][] value;
+public class Customiterator implements Iterator {
+    private final int[][] value;
 
     private int index = 0;
     private int inner = 0;
 
-    public CustomIterator(int[][] value) {
+    public Customiterator(int[][] value) {
         this.value = value;
     }
 

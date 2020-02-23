@@ -14,7 +14,7 @@ public class ArrayIterator<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
-        return (values.result.length>index);
+        return (values.result.length > index);
     }
 
     @Override
@@ -22,6 +22,6 @@ public class ArrayIterator<T> implements Iterator<T> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        return (T)values.result[index++];
+        return (T) values.result[index++];
     }
 }

@@ -1,6 +1,5 @@
-package job4j.iterator_of_iterator;
+package job4j.iteratorOfiterator;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -11,9 +10,7 @@ public class Converter {
             private Iterator<Integer> inner;
             private void CurrentIterator() {
                 while (it.hasNext()) {
-                    if (inner == null || !inner.hasNext()) {
-                        inner = it.next();
-                    } else {
+                    if (inner != null &&  inner.hasNext()) {
                         break;
                     }
                 }

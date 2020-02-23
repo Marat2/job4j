@@ -15,7 +15,7 @@ public class SimpleArrayTest {
 
     @Before
     public void setUp() throws OutOfLimitException {
-        SimpleArray<String> array= new SimpleArray<String>(4);
+        SimpleArray<String> array = new SimpleArray<String>(4);
         array.add("first");
         array.add("second");
         array.add("third");
@@ -24,7 +24,7 @@ public class SimpleArrayTest {
     }
 
     @Test
-    public void test(){
+    public void test() {
         System.out.println(it.next());
         System.out.println(it.next());
         System.out.println(it.next());

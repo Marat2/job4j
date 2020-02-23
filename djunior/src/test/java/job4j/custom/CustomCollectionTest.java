@@ -1,6 +1,5 @@
-package job4j.customiterator;
+package job4j.custom;
 
-import job4j.customiterator.CustomCollection;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,12 +12,12 @@ public class CustomCollectionTest {
     private Iterator<Integer> it;
 
     @Before
-    public void setUp(){
-        it = new CustomIterator(new int[][]{{1}, {3, 4}, {7}});
+    public void setUp() {
+        it = new Customiterator(new int[][]{{1}, {3, 4}, {7}});
     }
 
     @Test
-    public void testsThatNextMethodDoesntDependsOnPriorHasNextInvocation () {
+    public void testsThatNextMethodDoesntDependsOnPriorHasNextInvocation() {
         assertThat(it.next(), Matchers.is(1));
         assertThat(it.next(), Matchers.is(3));
         assertThat(it.next(), Matchers.is(4));
@@ -26,7 +25,7 @@ public class CustomCollectionTest {
     }
 
     @Test
-    public void sequentialHasNextInvocationDoesntAffectRetrievalOrder () {
+    public void sequentialHasNextInvocationDoesntAffectRetrievalOrder() {
         assertThat(it.hasNext(), Matchers.is(true));
         assertThat(it.hasNext(), Matchers.is(true));
         assertThat(it.next(), Matchers.is(1));
@@ -36,10 +35,10 @@ public class CustomCollectionTest {
     }
 
     @Test
-    public void hasNextNextSequentialInvocation () {
+    public void hasNextNextSequentialInvocation() {
         assertThat(it.hasNext(), Matchers.is(true));
         assertThat(it.next(), Matchers.is(1));
-        assertThat(it.hasNext(),Matchers.is(true));
+        assertThat(it.hasNext(), Matchers.is(true));
         assertThat(it.next(), Matchers.is(3));
         assertThat(it.hasNext(), Matchers.is(true));
         assertThat(it.next(), Matchers.is(4));
