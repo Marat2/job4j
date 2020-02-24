@@ -10,7 +10,9 @@ public class Converter {
             private Iterator<Integer> inner;
             private void CurrentIterator() {
                 while (it.hasNext()) {
-                    if (inner != null &&  inner.hasNext()) {
+                    if (inner == null || !inner.hasNext()) {
+                        inner = it.next();
+                    } else {
                         break;
                     }
                 }

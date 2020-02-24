@@ -25,5 +25,8 @@ public class User extends Base {
         this.name = name;
     }
 
-
+    @Override
+    public String toString(){
+        return "User: "+this.name+"; "+"id - "+this.getId();
+    }
 }
