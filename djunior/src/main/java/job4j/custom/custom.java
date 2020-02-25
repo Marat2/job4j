@@ -3,11 +3,11 @@ import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-public class Custom implements Iterable {
+public class custom implements Iterable {
 
     private final int[][] values;
 
-    public Custom(int[][] values) {
+    public custom(int[][] values) {
         this.values = values;
     }
 

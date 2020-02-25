@@ -1,4 +1,4 @@
-package job4j.iteratorOfiterator;
+package job4j.iterator;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

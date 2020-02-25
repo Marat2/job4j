@@ -1,13 +1,9 @@
 package job4j.store;
 
-import job4j.iteratorOfiterator.Converter;
 import job4j.simplearray.OutOfLimitException;
 import job4j.simplearray.SimpleArray;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Arrays;
-import java.util.Iterator;
 
 public class StoreTest {
     private RoleStore<Role> role;

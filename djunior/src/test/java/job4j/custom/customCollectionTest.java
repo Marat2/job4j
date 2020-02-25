@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-public class CustomCollectionTest {
+public class customCollectionTest {
     private Iterator<Integer> it;
 
     @Before
