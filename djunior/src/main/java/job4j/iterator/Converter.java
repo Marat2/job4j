@@ -9,12 +9,8 @@ public class Converter {
         return new Iterator<Integer>() {
             private Iterator<Integer> inner;
             private void CurrentIterator() {
-                while (it.hasNext()) {
-                    if (inner == null || !inner.hasNext()) {
+                while (it.hasNext() && (inner == null || !inner.hasNext())) {
                         inner = it.next();
-                    } else {
-                        break;
-                    }
                 }
             }
             @Override
