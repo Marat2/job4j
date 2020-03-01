@@ -1,13 +1,7 @@
-package job4j.tictactoe;
+package ru.job4j.tictactoe;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Logic3T {
     private final Figure3T[][] table;
