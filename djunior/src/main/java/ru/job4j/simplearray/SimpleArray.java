@@ -19,9 +19,9 @@ public class SimpleArray<T> {
     }
 
     public void set(int index, T model) throws OutOfLimitException {
-        if (index<result.length){
+        if (index < result.length) {
             result[index] = model;
-        }else {
+        } else {
             throw new OutOfLimitException("Превышен порог массива");
         }
     }
@@ -37,14 +37,14 @@ public class SimpleArray<T> {
     }
 
     public T get(int index) throws OutOfLimitException {
-        if (index<result.length){
+        if (index < result.length) {
             return (T) this.result[index];
         }
         throw new OutOfLimitException("Превышен порог массива");
     }
 
     public T[] getResult() throws OutOfLimitException {
-        if (index<result.length){
+        if (index < result.length) {
             return (T[]) this.result;
         }
         throw new OutOfLimitException("Превышен порог массива");
