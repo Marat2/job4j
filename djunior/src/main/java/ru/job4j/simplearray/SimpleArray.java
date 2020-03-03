@@ -2,7 +2,6 @@ package ru.job4j.simplearray;
 
 import java.util.Arrays;
 
-
 public class SimpleArray<T> {
 
     public Object[] result;
@@ -19,23 +18,35 @@ public class SimpleArray<T> {
         result[index++] = model;
     }
 
-    public void set(int index, T model) {
-        result[index] = model;
+    public void set(int index, T model) throws OutOfLimitException {
+        if (index<result.length){
+            result[index] = model;
+        }else {
+            throw new OutOfLimitException("Превышен порог массива");
+        }
     }
 
     public void remove(int index) {
+        Object[] arrOut = new Object[result.length - 1];
         int sourcePos = index + 1;
         int destPos = index;
         int len = result.length - index - 1;
         System.arraycopy(result, sourcePos, result, destPos, len);
-        result = Arrays.copyOf(result, result.length - 1);
+        index--;
+        //result = Arrays.copyOf(result, result.length - 1);
     }
 
-    public T get(int index) {
-        return (T) this.result[index];
+    public T get(int index) throws OutOfLimitException {
+        if (index<result.length){
+            return (T) this.result[index];
+        }
+        throw new OutOfLimitException("Превышен порог массива");
     }
 
-    public T[] getResult() {
-        return (T[]) this.result;
+    public T[] getResult() throws OutOfLimitException {
+        if (index<result.length){
+            return (T[]) this.result;
+        }
+        throw new OutOfLimitException("Превышен порог массива");
     }
 }

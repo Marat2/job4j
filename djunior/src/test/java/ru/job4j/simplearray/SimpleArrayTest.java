@@ -14,6 +14,7 @@ public class SimpleArrayTest {
         array.add("second");
         array.add("third");
         array.add("four");
+        array.remove(2);
         it = new ArrayIterator(array);
     }
 
@@ -22,6 +23,7 @@ public class SimpleArrayTest {
         System.out.println(it.next());
         System.out.println(it.next());
         System.out.println(it.next());
-        System.out.println(it.next());
+        //System.out.println(it.next());
     }
+
 }
