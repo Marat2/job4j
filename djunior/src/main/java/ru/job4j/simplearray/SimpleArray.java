@@ -19,14 +19,16 @@ public class SimpleArray<T> {
     }
 
     public void set(int index, T model) throws OutOfLimitException {
-        if (index < result.length) {
-            result[index] = model;
-        } else {
+        if (index >= result.length) {
             throw new OutOfLimitException("Превышен порог массива");
         }
+        result[index] = model;
     }
 
-    public void remove(int index) {
+    public void remove(int index) throws OutOfLimitException {
+        if (index >= result.length) {
+            throw new OutOfLimitException("Превышен порог массива");
+        }
         Object[] arrOut = new Object[result.length - 1];
         int sourcePos = index + 1;
         int destPos = index;

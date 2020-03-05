@@ -21,7 +21,7 @@ abstract class AbstractStore<T extends Base> implements Store<T> {
         return true;
     }
 
-    public boolean delete(String id) {
+    public boolean delete(String id) throws OutOfLimitException {
         sa.remove(findElement(id));
         return true;
     }

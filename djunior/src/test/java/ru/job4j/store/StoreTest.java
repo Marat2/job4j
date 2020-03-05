@@ -6,14 +6,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class StoreTest {
-    private RoleStore<Role> role;
-    private UserStore<User> user;
+    private RoleStore role;
+    private UserStore user;
     @Before
     public void setUp() throws OutOfLimitException {
         SimpleArray<User> simpleUserArray = new SimpleArray<>(3);
         SimpleArray<Role> simpleRoleArray = new SimpleArray<>(3);
-        role = new RoleStore<>(simpleRoleArray);
-        user = new UserStore<>(simpleUserArray);
+        role = new RoleStore(simpleRoleArray);
+        user = new UserStore(simpleUserArray);
         User user1 = new User("234");
         User user2 = new User("2234");
         User user3 = new User("2334");
