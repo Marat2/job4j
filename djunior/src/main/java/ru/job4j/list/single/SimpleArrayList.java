@@ -17,7 +17,10 @@ public class SimpleArrayList<E> {
     /**
      * Реализовать метод удаления первого элемент в списке.
      */
-    public E delete() {
+    public E delete() throws IncorrectAction {
+        if (size <= 0) {
+            throw new IncorrectAction("Нет данных в списке");
+        }
         Node<E> firstElement = this.first;
         this.first = firstElement.next;
         this.size--;

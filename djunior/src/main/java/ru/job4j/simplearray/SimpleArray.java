@@ -1,54 +1,49 @@
 package ru.job4j.simplearray;
 
-import java.util.Arrays;
-
 public class SimpleArray<T> {
 
     public Object[] result;
-    private int index = 0;
+    private int curIndex = 0;
 
     public SimpleArray(int length) {
         this.result = new Object[length];
     }
 
     public void add(T model) throws OutOfLimitException {
-        if (index == result.length) {
+        if (curIndex == result.length) {
             throw new OutOfLimitException("Превышен порог массива");
         }
-        result[index++] = model;
+        result[curIndex++] = model;
     }
 
-    public void set(int index, T model) throws OutOfLimitException {
-        if (index >= result.length) {
-            throw new OutOfLimitException("Превышен порог массива");
+    public void set(int index, T model)  {
+        if (index < 0 || index >= result.length) {
+            throw new IndexOutOfBoundsException();
         }
         result[index] = model;
     }
 
-    public void remove(int index) throws OutOfLimitException {
-        if (index >= result.length) {
-            throw new OutOfLimitException("Превышен порог массива");
+    public void remove(int index) {
+        if (index < 0 || index >= result.length) {
+            throw new IndexOutOfBoundsException();
         }
         Object[] arrOut = new Object[result.length - 1];
         int sourcePos = index + 1;
         int destPos = index;
         int len = result.length - index - 1;
         System.arraycopy(result, sourcePos, result, destPos, len);
-        index--;
+        curIndex--;
         //result = Arrays.copyOf(result, result.length - 1);
     }
 
-    public T get(int index) throws OutOfLimitException {
-        if (index < result.length) {
-            return (T) this.result[index];
+    public T get(int index) {
+        if (index < 0 || index >= result.length) {
+            throw new IndexOutOfBoundsException();
         }
-        throw new OutOfLimitException("Превышен порог массива");
+        return (T) this.result[index];
     }
 
-    public T[] getResult() throws OutOfLimitException {
-        if (index < result.length) {
-            return (T[]) this.result;
-        }
-        throw new OutOfLimitException("Превышен порог массива");
+    public T[] getResult() {
+        return (T[]) this.result;
     }
 }

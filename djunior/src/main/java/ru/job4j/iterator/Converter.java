@@ -24,7 +24,6 @@ public class Converter {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                //System.out.println("-------"+inner.next());
                 return inner.next();
             }
         };

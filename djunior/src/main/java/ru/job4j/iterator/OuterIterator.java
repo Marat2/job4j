@@ -13,7 +13,6 @@ public class OuterIterator implements Iterator {
         this.values = values;
     }
 
-
     @Override
     public boolean hasNext() {
         return (values.length > this.index);

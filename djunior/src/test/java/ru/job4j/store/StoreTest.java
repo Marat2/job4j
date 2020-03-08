@@ -31,4 +31,8 @@ public class StoreTest {
     public void firesTest() {
         System.out.println(user.findById("234"));
     }
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void secondTest() {
+        System.out.println(user.delete("11234"));
+    }
 }

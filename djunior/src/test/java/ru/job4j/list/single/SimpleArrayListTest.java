@@ -16,7 +16,7 @@ public class SimpleArrayListTest {
     }
 
     @Test
-    public void whenAddThreeElementsThenUseDeleteFirstAndGetFirstResultTwo() {
+    public void whenAddThreeElementsThenUseDeleteFirstAndGetFirstResultTwo() throws IncorrectAction {
         list.delete();
         assertThat(list.get(0), is(2));
     }
