@@ -4,9 +4,12 @@ public class SimpleArray<T> {
 
     public Object[] result;
     private int curIndex = 0;
-
     public SimpleArray(int length) {
         this.result = new Object[length];
+    }
+
+    public int size() {
+        return curIndex;
     }
 
     public void add(T model) throws OutOfLimitException {
@@ -17,14 +20,14 @@ public class SimpleArray<T> {
     }
 
     public void set(int index, T model)  {
-        if (index < 0 || index >= result.length) {
+        if (index < 0 || index >= curIndex) {
             throw new IndexOutOfBoundsException();
         }
         result[index] = model;
     }
 
     public void remove(int index) {
-        if (index < 0 || index >= result.length) {
+        if (index < 0 || index >= curIndex) {
             throw new IndexOutOfBoundsException();
         }
         Object[] arrOut = new Object[result.length - 1];
@@ -37,7 +40,7 @@ public class SimpleArray<T> {
     }
 
     public T get(int index) {
-        if (index < 0 || index >= result.length) {
+        if (index < 0 || index >= curIndex) {
             throw new IndexOutOfBoundsException();
         }
         return (T) this.result[index];

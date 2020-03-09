@@ -2,7 +2,6 @@ package ru.job4j.store;
 
 import ru.job4j.simplearray.OutOfLimitException;
 import ru.job4j.simplearray.SimpleArray;
-import java.util.NoSuchElementException;
 
 abstract class AbstractStore<T extends Base> implements Store<T> {
 
@@ -31,7 +30,7 @@ abstract class AbstractStore<T extends Base> implements Store<T> {
     }
 
     protected int findElement(String id) {
-        for (int i = 0; i < sa.result.length; i++) {
+        for (int i = 0; i < sa.size(); i++) {
             T role = (T) sa.result[i];
             if (role.getId().equals(id)) {
                 return i;
