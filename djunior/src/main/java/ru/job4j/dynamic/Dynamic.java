@@ -5,13 +5,13 @@ import java.util.*;
 public class Dynamic<E> implements Iterable<E> {
 
     private static Object[] arrayStore = {};
-
+    private int defSize = 10;
     private int size;
 
     private int expectedModCount;
     private int modCount = 0;
     Dynamic() {
-        arrayStore = new Object[0];
+        arrayStore = new Object[defSize];
     }
     @Override
     public Iterator<E> iterator() {
@@ -21,10 +21,10 @@ public class Dynamic<E> implements Iterable<E> {
     public void add(E value) {
         arrayStore = grow();
         incrementOperation();
-        arrayStore[arrayStore.length - 1] = value;
+        arrayStore[size] = value;
     }
     public E get(int index) {
-        if (index > 0 && index < arrayStore.length) {
+        if (index > 0 && index <= size) {
             return (E) arrayStore[index];
         }
         throw new NoSuchElementException();
@@ -33,20 +33,23 @@ public class Dynamic<E> implements Iterable<E> {
         this.modCount++;
     }
     private Object[] grow() {
+        if (size >= arrayStore.length) {
+            arrayStore = Arrays.copyOf(arrayStore, arrayStore.length + defSize);
+        }
         size++;
-        arrayStore = Arrays.copyOf(arrayStore, arrayStore.length + 1);
         return  arrayStore;
     }
-    private void checkForComodification(int expectedModCount) {
-        if (modCount != expectedModCount) {
-            throw new ConcurrentModificationException();
-        }
-    }
+
     private class IteratorOfDynamic implements Iterator<E> {
-        int cursor;
+        int cursor = 1;
         int expectedModCount = modCount;
         IteratorOfDynamic() {
 
+        }
+        private void checkForComodification(int expectedModCount) {
+            if (modCount != expectedModCount) {
+                throw new ConcurrentModificationException();
+            }
         }
         @Override
         public boolean hasNext() {
@@ -57,11 +60,8 @@ public class Dynamic<E> implements Iterable<E> {
         public E next() {
             checkForComodification(expectedModCount);
             int i = cursor;
-            if (i >= size) {
+            if (!hasNext()) {
                 throw new NoSuchElementException();
-            }
-            if (i >= arrayStore.length) {
-                throw new ConcurrentModificationException();
             }
             cursor = i + 1;
             return (E) arrayStore[i];
