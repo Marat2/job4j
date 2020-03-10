@@ -9,7 +9,7 @@ public class Dynamic<E> implements Iterable<E> {
     private int size;
 
     private int expectedModCount;
-    private int modCount = 0;
+    private int modCount;
     Dynamic() {
         arrayStore = new Object[defSize];
     }
@@ -19,12 +19,13 @@ public class Dynamic<E> implements Iterable<E> {
     }
 
     public void add(E value) {
+        int i = size;
         arrayStore = grow();
         incrementOperation();
-        arrayStore[size] = value;
+        arrayStore[i] = value;
     }
     public E get(int index) {
-        if (index > 0 && index <= size) {
+        if (index > 0 && index < size) {
             return (E) arrayStore[index];
         }
         throw new NoSuchElementException();
@@ -41,7 +42,7 @@ public class Dynamic<E> implements Iterable<E> {
     }
 
     private class IteratorOfDynamic implements Iterator<E> {
-        int cursor = 1;
+        int cursor = 0;
         int expectedModCount = modCount;
         IteratorOfDynamic() {
 
