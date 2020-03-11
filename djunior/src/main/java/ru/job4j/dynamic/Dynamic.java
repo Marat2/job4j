@@ -8,7 +8,7 @@ public class Dynamic<E> implements Iterable<E> {
     private int defSize = 10;
     private int size;
 
-    private int expectedModCount;
+    //private int expectedModCount;
     private int modCount;
     Dynamic() {
         arrayStore = new Object[defSize];
