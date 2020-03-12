@@ -1,6 +1,6 @@
 package ru.job4j.dynamiclist;
 
-import ru.job4j.dynamic.Dynamic;
+import ru.job4j.list.single.IncorrectAction;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
@@ -18,6 +18,16 @@ public class CustomLinked<E> implements Iterable<E> {
         this.first = newLink;
         this.size++;
         modCount++;
+    }
+
+    public E deleteLast() throws IncorrectAction {
+        if (size <= 0) {
+            throw new IncorrectAction("Нет данных в списке");
+        }
+        Node<E> firstElement = this.first;
+        this.first = firstElement.next;
+        this.size--;
+        return firstElement.data;
     }
 
     public E get(int index) {
