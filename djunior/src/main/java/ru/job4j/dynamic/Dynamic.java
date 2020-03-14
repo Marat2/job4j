@@ -4,15 +4,15 @@ import java.util.*;
 
 public class Dynamic<E> implements Iterable<E> {
 
-    private static Object[] arrayStore = {};
+    private static Object[] arrayStore;
     private int defSize = 10;
     private int size;
-
-    //private int expectedModCount;
     private int modCount;
+
     Dynamic() {
         arrayStore = new Object[defSize];
     }
+
     @Override
     public Iterator<E> iterator() {
         return new IteratorOfDynamic();
@@ -24,15 +24,18 @@ public class Dynamic<E> implements Iterable<E> {
         incrementOperation();
         arrayStore[i] = value;
     }
+
     public E get(int index) {
-        if (index > 0 && index < size) {
-            return (E) arrayStore[index];
+        if (index < 0 && index > size) {
+            throw new NoSuchElementException();
         }
-        throw new NoSuchElementException();
+        return (E) arrayStore[index];
     }
+
     private void incrementOperation() {
         this.modCount++;
     }
+
     private Object[] grow() {
         if (size >= arrayStore.length) {
             arrayStore = Arrays.copyOf(arrayStore, arrayStore.length + defSize);
@@ -44,14 +47,17 @@ public class Dynamic<E> implements Iterable<E> {
     private class IteratorOfDynamic implements Iterator<E> {
         int cursor = 0;
         int expectedModCount = modCount;
+
         IteratorOfDynamic() {
 
         }
+
         private void checkForComodification(int expectedModCount) {
             if (modCount != expectedModCount) {
                 throw new ConcurrentModificationException();
             }
         }
+
         @Override
         public boolean hasNext() {
             return cursor != size;

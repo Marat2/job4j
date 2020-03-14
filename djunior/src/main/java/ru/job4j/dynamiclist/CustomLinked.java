@@ -37,19 +37,19 @@ public class CustomLinked<E> implements Iterable<E> {
         }
         return result.data;
     }
+
     public int getSize() {
         return this.size;
     }
+
     @Override
     public Iterator<E> iterator() {
         return new IteratorOfDynamic();
     }
 
     private static class Node<E> {
-
         E data;
         Node<E> next;
-
         Node(E data) {
             this.data = data;
         }
@@ -58,9 +58,11 @@ public class CustomLinked<E> implements Iterable<E> {
     private class IteratorOfDynamic implements Iterator<E> {
         int cursor = size - 1;
         int expectedModCount = modCount;
+
         IteratorOfDynamic() {
 
         }
+
         private void checkForComodification(int expectedModCount) {
             if (modCount != expectedModCount) {
                 throw new ConcurrentModificationException();
