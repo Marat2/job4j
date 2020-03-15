@@ -23,6 +23,15 @@ public class Dynamic<E> implements Iterable<E> {
         arrayStore = grow();
         incrementOperation();
         arrayStore[i] = value;
+        System.out.println(size);
+        size++;
+    }
+
+    private Object[] grow() {
+        if (size >= arrayStore.length) {
+            arrayStore = Arrays.copyOf(arrayStore, arrayStore.length + defSize);
+        }
+        return  arrayStore;
     }
 
     public E get(int index) {
@@ -34,14 +43,6 @@ public class Dynamic<E> implements Iterable<E> {
 
     private void incrementOperation() {
         this.modCount++;
-    }
-
-    private Object[] grow() {
-        if (size >= arrayStore.length) {
-            arrayStore = Arrays.copyOf(arrayStore, arrayStore.length + defSize);
-        }
-        size++;
-        return  arrayStore;
     }
 
     private class IteratorOfDynamic implements Iterator<E> {
