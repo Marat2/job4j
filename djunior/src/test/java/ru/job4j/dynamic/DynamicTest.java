@@ -21,7 +21,7 @@ public class DynamicTest {
     @Test
     public void testForiterator() {
         Iterator<String> dynamicIterator =  dynamicArray.iterator();
-        System.out.println(dynamicArray.get(0)+""+dynamicArray.get(1)+""+dynamicArray.get(2));
+        System.out.println(dynamicArray.get(0) + "" + dynamicArray.get(1) + "" + dynamicArray.get(2));
         assertThat(dynamicIterator.next(), is("test1"));
     }
     @Test(expected = ConcurrentModificationException.class)

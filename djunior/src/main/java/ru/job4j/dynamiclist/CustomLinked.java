@@ -42,6 +42,10 @@ public class CustomLinked<E> implements Iterable<E> {
         return this.size;
     }
 
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     @Override
     public Iterator<E> iterator() {
         return new IteratorOfDynamic();
