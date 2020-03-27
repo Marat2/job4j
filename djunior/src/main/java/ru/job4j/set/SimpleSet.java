@@ -6,10 +6,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class SimpleSet<T> implements Iterable<T>{
+public class SimpleSet<T> implements Iterable<T> {
 
     Dynamic simpleList = new Dynamic();
-    private int size;
+    //private int size;
 
     @Override
     public Iterator<T> iterator() {
@@ -27,7 +27,7 @@ public class SimpleSet<T> implements Iterable<T>{
         }
 
         simpleList.add(e);
-        size++;
+        //size++;
     }
 
     private class IteratorSet implements Iterator<T> {
@@ -39,7 +39,7 @@ public class SimpleSet<T> implements Iterable<T>{
 
         @Override
         public boolean hasNext() {
-            return cursor != size;
+            return cursor != simpleList.getSize();
         }
 
         @Override

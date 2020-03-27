@@ -45,6 +45,10 @@ public class Dynamic<E> implements Iterable<E> {
         this.modCount++;
     }
 
+    public int getSize() {
+        return this.size;
+    }
+
     private class IteratorOfDynamic implements Iterator<E> {
         int cursor = 0;
         int expectedModCount = modCount;
