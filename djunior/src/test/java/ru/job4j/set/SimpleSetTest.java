@@ -25,6 +25,5 @@ public class SimpleSetTest {
         System.out.println(dynamicIterator.next());
         System.out.println(dynamicIterator.next());
         System.out.println(dynamicIterator.next());
-        //assertThat(dynamicIterator.next(), is("test1"));
     }
 }

@@ -9,47 +9,25 @@ import java.util.NoSuchElementException;
 public class SimpleSet<T> implements Iterable<T> {
 
     Dynamic simpleList = new Dynamic();
-    //private int size;
 
     @Override
     public Iterator<T> iterator() {
-        return new IteratorSet();
+        return simpleList.iterator();
     }
 
     public void add(T e) {
+        if (!contains(e)) {
+            simpleList.add(e);
+        }
+    }
+    public boolean contains(T e) {
         Iterator iterator = this.iterator();
         while (iterator.hasNext()) {
             T cur = (T) iterator.next();
             if (cur == e) {
-                return;
+                return true;
             }
-
         }
-
-        simpleList.add(e);
-        //size++;
-    }
-
-    private class IteratorSet implements Iterator<T> {
-        public int cursor = 0;
-
-        public IteratorSet() {
-
-        }
-
-        @Override
-        public boolean hasNext() {
-            return cursor != simpleList.getSize();
-        }
-
-        @Override
-        public T next() {
-            int i = cursor;
-            if (!hasNext()) {
-                throw new NoSuchElementException();
-            }
-            cursor = i + 1;
-            return (T) simpleList.get(i);
-        }
+        return false;
     }
 }
