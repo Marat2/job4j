@@ -19,7 +19,7 @@ public class UserTest {
         User user1 = new User("M", 26,calendar);
         User user2 = new User("M", 26,calendar);
         usermap.put(user1,"user1");//key value
-        
+
         usermap.put(user2,"user2");
 
     }
