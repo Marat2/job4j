@@ -17,10 +17,10 @@ public class User {
     public String toString() {
         return " Name: "+this.name+" children: "+this.children+" birthday: "+this.birthday.getWeekYear();
     }*/
-    /*@Override
+    @Override
     public int hashCode() {
         return this.name.hashCode();
-    }*/
+    }
     @Override
     public boolean equals(Object obj){
         User other = (User)obj;
