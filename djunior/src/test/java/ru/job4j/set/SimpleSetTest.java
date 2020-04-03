@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.function.Consumer;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -20,10 +21,11 @@ public class SimpleSetTest {
 
     @Test
     public void testForiterator() {
-        Iterator<String> dynamicIterator =  dynamicArray.iterator();
-        System.out.println(dynamicIterator.next());
-        System.out.println(dynamicIterator.next());
-        System.out.println(dynamicIterator.next());
-        System.out.println(dynamicIterator.next());
+        dynamicArray.forEach(new Consumer() {
+            @Override
+            public void accept(Object o) {
+                System.out.println(o.toString());
+            }
+        });
     }
 }

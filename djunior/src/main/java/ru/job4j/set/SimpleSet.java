@@ -5,8 +5,9 @@ import ru.job4j.dynamic.Dynamic;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
-public class SimpleSet<T> implements Iterable<T> {
+public class SimpleSet<T> implements Iterable {
 
     Dynamic simpleList = new Dynamic();
 
