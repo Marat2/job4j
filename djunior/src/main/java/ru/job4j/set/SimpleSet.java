@@ -25,7 +25,7 @@ public class SimpleSet<T> implements Iterable {
         Iterator iterator = this.iterator();
         while (iterator.hasNext()) {
             T cur = (T) iterator.next();
-            if (cur == e) {
+            if (cur.equals(e) ) {
                 return true;
             }
         }
