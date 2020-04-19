@@ -1,70 +1,89 @@
 package ru.job4j.map;
 
-import java.util.Arrays;
+
+import java.util.Iterator;
 
 public class CustomHash<K,V> {
-    int defaultSize = 1 << 2;
-    int size;
-    V[] baseArray = (V[]) new Object[defaultSize];
 
-    public int size() { return size; }
+    private Node<K, V>[] nodes = new Node[16];
 
-    public boolean isEmpty() { return size() == 0; }
+    boolean put(K key, V value) {
+        if (key == null && this.get(null) != null) {
+            return false;
+        }
 
-    private int getBucketIndex(K key)
-    {
-        int hashCode = key.hashCode();
-        int index = hashCode % defaultSize;
-        return index;
+        Node<K, V> a = new Node<>(key, value);
+        int index = key.hashCode() % (nodes.length - 1);
+        if (nodes.length - 1 >= index) {
+            if (nodes[index] == null) {
+                nodes[index] = a;
+            } else if (nodes[index].equals(a)) {
+                nodes[index] = a;
+            }
+            nodes[index] = new Node<>(key, value);
+        } else {
+            grow();
+            nodes[index] = new Node<>(key, value);
+        }
+        return true;
     }
 
-
-    public V get(K key)
-    {
-        // Find head of chain for given key
-        int bucketIndex = Math.abs(getBucketIndex(key));
-        if(baseArray[bucketIndex]!=null) {
-            return baseArray[bucketIndex];
-        }
-        return null;
+    void grow() {
+        Node<K, V>[] tmpNodes = new Node[nodes.length * 3 / 2 + 1];
+        tmpNodes = nodes.clone();
     }
 
-
-    public void put(K key, V value)
-    {
-        // Find head of chain for given key
-        int bucketIndex = Math.abs(getBucketIndex(key));
-        baseArray[bucketIndex] = value;
-        // Insert key in chain
-        size++;
-        // If load factor goes beyond threshold, then
-        // double hash table size
-        if ((1.0*size)/defaultSize >= 0.7)
-        {
-            int temp = defaultSize;
-
-            defaultSize = 2 * defaultSize;
-            size = 0;
-            baseArray =Arrays.copyOf(baseArray, this.defaultSize);
+    V get(K key) {
+        Iterator it = iterator();
+        V result = null;
+        while (it.hasNext()) {
+            Node tmpNode = ((Node) it.next());
+            if (tmpNode.key.equals(key)) {
+                result = (V) tmpNode.value;
+                break;
+            }
         }
+        return result;
     }
 
-
-
-    /*private int hash(K key) {
-        int h;
-        int hash= (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
-        return hash;
-    }*/
-
-    /*private V[] resize(){
-        if(baseArray.length==0){
-            baseArray = (V[]) new Object[defaultSize];
-        }else if(baseArray.length>=defaultSize){
-            this.defaultSize = baseArray.length<<1;
-            baseArray =Arrays.copyOf(baseArray, this.defaultSize);
+    boolean delete(K key) {
+        Iterator it = iterator();
+        boolean result = false;
+        while (it.hasNext()) {
+            Node tmpNode = ((Node) it.next());
+            if (tmpNode.key.equals(key)) {
+                tmpNode.next = ((Node) it.next()).next;
+                result = true;
+                break;
+            }
         }
-        return baseArray;
-    }*/
+        return result;
+    }
 
+    public Iterator iterator() {
+        return new Iterator() {
+            int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return (nodes[index] != null && nodes[index].next != null);
+            }
+
+            @Override
+            public Object next() {
+                return nodes[index++];
+            }
+        };
+    }
+
+    private class Node<K, V> {
+        K key;
+        V value;
+        Node<K, V> next = null;
+
+        public Node(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
 }
