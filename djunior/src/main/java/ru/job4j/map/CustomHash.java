@@ -5,85 +5,190 @@ import java.util.Iterator;
 
 public class CustomHash<K,V> {
 
-    private Node<K, V>[] nodes = new Node[16];
+    private final int DEFAULT_TABLE_SIZE = 128;
 
-    boolean put(K key, V value) {
-        if (key == null && this.get(null) != null) {
-            return false;
-        }
+    private float threshold = 0.75f;
 
-        Node<K, V> a = new Node<>(key, value);
-        int index = key.hashCode() % (nodes.length - 1);
-        if (nodes.length - 1 >= index) {
-            if (nodes[index] == null) {
-                nodes[index] = a;
-            } else if (nodes[index].equals(a)) {
-                nodes[index] = a;
-            }
-            nodes[index] = new Node<>(key, value);
-        } else {
-            grow();
-            nodes[index] = new Node<>(key, value);
-        }
-        return true;
+    private int maxSize = 96;
+
+    private int size = 0;
+
+
+
+    HashEntry[] table;
+
+
+
+    CustomHash() {
+
+        table = new HashEntry[DEFAULT_TABLE_SIZE];
+
+        for (int i = 0; i < DEFAULT_TABLE_SIZE; i++)
+
+            table[i] = null;
+
     }
 
-    void grow() {
-        Node<K, V>[] tmpNodes = new Node[nodes.length * 3 / 2 + 1];
-        tmpNodes = nodes.clone();
+
+
+    void setThreshold(float threshold) {
+
+        this.threshold = threshold;
+
+        maxSize = (int) (table.length * threshold);
+
     }
 
-    V get(K key) {
-        Iterator it = iterator();
-        V result = null;
-        while (it.hasNext()) {
-            Node tmpNode = ((Node) it.next());
-            if (tmpNode.key.equals(key)) {
-                result = (V) tmpNode.value;
+
+
+    public HashEntry get(K key) {
+
+        int hash = Math.abs(key.hashCode() % table.length);
+        HashEntry entry = new HashEntry("","");
+        /*while ( (table[hash] != null && !table[hash].getKey().equals(key))) {
+            hash = (hash + 1) % table.length;
+        }*/
+        for(int i=0;i<=table.length;i++){
+            if(table[i]!=null && table[i].getKey().equals(key)){
+                entry =  table[i];
                 break;
             }
         }
-        return result;
+        return entry;
+
     }
 
-    boolean delete(K key) {
-        Iterator it = iterator();
-        boolean result = false;
-        while (it.hasNext()) {
-            Node tmpNode = ((Node) it.next());
-            if (tmpNode.key.equals(key)) {
-                tmpNode.next = ((Node) it.next()).next;
-                result = true;
-                break;
+
+
+    public void put(K key, V value) {
+
+        int hash = Math.abs(key.hashCode() % table.length);
+
+        int initialHash = -1;
+
+        //int indexOfDeletedEntry = -1;
+        int indexOfDeletedEntry = hash;
+        /*while (hash != initialHash && (*//*table[hash] == DeletedEntry.getUniqueDeletedEntry() ||*//* table[hash] != null && !table[hash].getKey().equals(key))) {
+
+            if (initialHash == -1)
+
+                initialHash = hash;
+
+            *//*if (table[hash] == DeletedEntry.getUniqueDeletedEntry())
+
+                indexOfDeletedEntry = hash;*//*
+
+            hash = (hash + 1) % table.length;
+
+        }*/
+
+        if ((table[hash] == null/* || hash == initialHash*/)/* && indexOfDeletedEntry != -1*/) {
+
+            table[indexOfDeletedEntry] = new HashEntry(key, value);
+
+            size++;
+
+        } else if (initialHash != hash)
+
+            if (/*table[hash] != DeletedEntry.getUniqueDeletedEntry()
+
+                    && */table[hash] != null && table[hash].getKey().equals(key) )
+
+                table[hash].setValue(value);
+
+            else {
+
+                table[hash] = new HashEntry(key, value);
+
+                size++;
+
             }
+
+        if (size >= maxSize)
+
+            resize();
+
+    }
+
+
+
+    private void resize() {
+
+        int tableSize = 2 * table.length;
+
+        maxSize = (int) (tableSize * threshold);
+
+        HashEntry[] oldTable = table;
+
+        table = new HashEntry[tableSize];
+
+        size = 0;
+
+        for (int i = 0; i < oldTable.length; i++)
+
+            if (oldTable[i] != null
+
+                    /*&& oldTable[i] != DeletedEntry.getUniqueDeletedEntry()*/)
+
+                put((K)oldTable[i].getKey(), (V)oldTable[i].getValue());
+
+    }
+
+
+
+    public void remove(int key) {
+
+        int hash = (key % table.length);
+
+        int initialHash = -1;
+
+        while (hash != initialHash
+
+                && (/*table[hash] == DeletedEntry.getUniqueDeletedEntry()
+
+                ||*/ table[hash] != null
+
+                && !table[hash].getKey().equals(key))) {
+
+            if (initialHash == -1)
+
+                initialHash = hash;
+
+            hash = (hash + 1) % table.length;
+
         }
-        return result;
+
+        if (hash != initialHash && table[hash] != null) {
+
+            table[hash] = null;/*DeletedEntry.getUniqueDeletedEntry();*/
+
+            size--;
+
+        }
+
     }
-
-    public Iterator iterator() {
-        return new Iterator() {
-            int index = 0;
-
-            @Override
-            public boolean hasNext() {
-                return (nodes[index] != null && nodes[index].next != null);
-            }
-
-            @Override
-            public Object next() {
-                return nodes[index++];
-            }
-        };
-    }
-
-    private class Node<K, V> {
+    public class HashEntry<K, V> {
         K key;
         V value;
-        Node<K, V> next = null;
 
-        public Node(K key, V value) {
+        public HashEntry(K key, V value) {
             this.key = key;
             this.value = value;
+        }
+
+        public K getKey(){
+            return this.key;
+        }
+
+        public V getValue(){
+            return this.value;
+        }
+
+        public void setValue(V value){
+            this.value=value;
+        }
+        public void setKey(K key){
+            this.key=key;
         }
     }
 }
