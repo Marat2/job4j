@@ -9,7 +9,9 @@ import java.util.function.Consumer;
 
 public class SimpleSet<T> implements Iterable {
 
-    Dynamic simpleList = new Dynamic();
+    private Dynamic simpleList = new Dynamic();
+
+    public boolean result = false;
 
     @Override
     public Iterator<T> iterator() {
@@ -17,18 +19,17 @@ public class SimpleSet<T> implements Iterable {
     }
 
     public void add(T e) {
-        if (!contains(e)) {
+        contains(e);
+        if (!result) {
             simpleList.add(e);
         }
     }
-    public boolean contains(T e) {
-        Iterator iterator = this.iterator();
-        while (iterator.hasNext()) {
-            T cur = (T) iterator.next();
-            if (cur.equals(e) ) {
-                return true;
+
+    public void contains(T e) {
+        iterator().forEachRemaining(s-> {
+            if (s.equals(e)) {
+                 this.result = true;
             }
-        }
-        return false;
+        });
     }
 }
