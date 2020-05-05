@@ -24,6 +24,5 @@ public class CustomHashTest {
     @Test
     public void testMap(){
         System.out.println(custom.get("first").getValue());
-
     }
 }
