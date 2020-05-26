@@ -29,7 +29,7 @@ public class TreeTest {
         );
     }
     @Test
-    public void isBinaryTree(){
+    public void isBinaryTree() {
         Tree<Integer> tree = new Tree<>(6);
         tree.add(6, 4);
         tree.add(6, 8);
