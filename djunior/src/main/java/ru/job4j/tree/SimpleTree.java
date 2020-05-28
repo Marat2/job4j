@@ -16,5 +16,6 @@ public interface SimpleTree<E> {
         public Node(E value) {
             this.value = value;
         }
+
     }
 }
