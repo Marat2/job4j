@@ -8,21 +8,32 @@ import java.util.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 public class CustomHashTest {
-    CustomHash<String,String> custom;
+    SecondCustomHash<String,String> custom;
     @Before
     public void setUp(){
-        custom = new CustomHash();
+        custom = new SecondCustomHash<String,String>();
         custom.put("first","a");
         custom.put("first","a");
         custom.put("second","b");
         custom.put("third","c");
         custom.put("fourth","d");
         custom.put("fifth","d");
+        custom.put("sd","cc");
+        custom.put("fg","dg");
+        custom.put("df","dj");
     }
 
 
     @Test
     public void testMap(){
-        System.out.println(custom.get("first").getValue());
+        //custom.remove("df");
+        Iterator<String> iterator = custom.iterator();
+        while(iterator.hasNext()){
+            String value = iterator.next();
+            if(value!=null){
+                System.out.println(value);
+            }
+
+        }
     }
 }
