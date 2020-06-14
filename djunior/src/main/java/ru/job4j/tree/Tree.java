@@ -16,7 +16,7 @@ public class Tree<E> implements SimpleTree<E> {
         if (node.isPresent()) {
             Optional<Node<E>> childNode = node.get().children.stream().filter(s->s.value.equals(child)).findFirst();
             if (!childNode.isPresent()) {
-                node.get().children.add( new Node<>(child));
+                node.get().children.add(new Node<>(child));
                 rsl = true;
             }
         }
